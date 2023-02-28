@@ -1,7 +1,7 @@
 import React from 'react';
 import Button from './components/Button';
 import itens from './assets/itens.json';
-import Product from './components/Products/Product';
+import Products from './components/Products';
 
 const item = itens[2];
 
@@ -9,7 +9,7 @@ const item = itens[2];
 function App() {
   return (
     <div className="App">
-      <Product product={item}></Product>
+      <Products></Products>
     </div>
   );
 }

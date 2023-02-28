@@ -1,8 +1,6 @@
 import React from 'react';
 import itens from '../../../assets/itens.json';
 import style from './Product.module.scss';
-import image from './image.png';
-
 
 type Props = typeof itens[0];
 export default class Product extends React.Component<{product:Props}>{
