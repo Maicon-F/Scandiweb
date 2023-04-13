@@ -14,7 +14,7 @@ export default class Product extends React.Component<{product:Props}>{
                 </div>
                 <div className={style.container}>
                     <h2>{title}</h2>
-                    <p>{price}</p>
+                    <p>${price}</p>
                 </div>
            </div>
         )

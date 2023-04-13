@@ -10,8 +10,12 @@
       "category": {
         "id": 1,
         "label": "Men"
-      }
-    },
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5","#D3D2D5"],
+      "selectedColor":"#D3D2D5",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
+      },
     {
       "title": "Apollo Running Short",
       "description": "Description of the clothes",
@@ -23,7 +27,11 @@
       "category": {
         "id": 1,
         "label": "Women"
-      }
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5"],
+      "selectedColor":"#0F6450",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
     },
     {
       "title": "Apollo Running Short",
@@ -36,7 +44,11 @@
       "category": {
         "id": 1,
         "label": "Unissex"
-      }
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5"],
+      "selectedColor":"#0F6450",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
     },
     {
       "title": "Apollo Running Short",
@@ -49,7 +61,11 @@
       "category": {
         "id": 1,
         "label": "Men"
-      }
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5"],
+      "selectedColor":"#0F6450",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
     },
     {
       "title": "Apollo Running Short",
@@ -62,7 +78,11 @@
       "category": {
         "id": 1,
         "label": "Women"
-      }
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5"],
+      "selectedColor":"#0F6450",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
     },
     {
       "title": "Apollo Running Short",
@@ -75,6 +95,10 @@
       "category": {
         "id": 6,
         "label": "Unissex"
-      }
+      },
+      "availableColors":["#0F6450", "#2B2B2B", "#D3D2D5"],
+      "selectedColor":"#0F6450",
+      "availaSizes":["XS", "S", "M", "L"],
+      "selectedSize":"S"
     }
   ]
