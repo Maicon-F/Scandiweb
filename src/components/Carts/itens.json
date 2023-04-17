@@ -1,0 +1,41 @@
+[
+    {
+      "title": "Apollo Running Short",
+      "description": "Description of the clothes",
+      "photo": "../../../assets/images/image1.png",
+      "size": 400,
+      "serving": 2,
+      "price": 73.00,
+      "id": 1,
+      "category": {
+        "id": 1,
+        "label": "clothes"
+      }
+    },
+    {
+      "title": "Apollo Running Short",
+      "description": "Description of the clothes",
+      "photo": "../../../assets/images/image2.png",
+      "size": 400,
+      "serving": 2,
+      "price": 54.00,
+      "id": 2,
+      "category": {
+        "id": 1,
+        "label": "clothes"
+      }
+    },
+    {
+      "title": "Apollo Running Short",
+      "description": "Description of the clothes",
+      "photo": "../../../assets/images/image3.png",
+      "size": 350,
+      "serving": 1,
+      "price": 58.00,
+      "id": 3,
+      "category": {
+        "id": 1,
+        "label": "clothes"
+      }
+    }
+  ]

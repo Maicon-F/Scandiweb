@@ -1,15 +1,7 @@
 .pd{
     display: flex;
-    margin: 30px 90px;
+    margin: 30px 50px;
     font-size: 30px;
-
-    &-image{
-        margin: 0 100px 0 24px;
-        img{
-            width: 44vw;
-            height: 38vw;
-        }
-    }
 
     
     &-gallery{
@@ -22,52 +14,21 @@
         }
     }
 
+        &-image{
+        margin: 0 0px 0 24px;
+        img{
+            width: 44vw;
+            height: 38vw;
+        }
+    }
+
     &-details{
         display: flex;
         flex-direction: column;
         margin-top: -40px;
-        max-width: 22vw;
+        max-width: 35vw;
         font-family: var(--rob);
 
-        h2 {
-            font-weight: bold;
-        }  
-    
-         h3 {
-            margin-top: -30px;  
-            font-weight: 100; 
-        }
-    
-        button{
-            width: 96%;
-            background-color: #5ECE7B;
-            padding: 20px;
-            color: white;
-            border: none;
-            font-family: var(--ral);
-            font-weight: 600;
-            font-size: 16px;
-            box-shadow: 0px 5px 10px rgba(0,0,0,0.25);
-        }
-    
-    
-        &__price-label {
-            font-size: 18px;
-            font-weight: bold;
-            margin-top: 50px;
-            margin-bottom: -10px;
-        }
-    
-        &__price {
-            font-size: 24px;
-            font-weight: bold;
-        }
-    
-        &__description {
-            max-width: 96%;
-            font-size: 16px;
-            margin-top: 40px;
-        }
     }
 
 }

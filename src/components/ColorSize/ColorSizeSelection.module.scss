@@ -3,11 +3,10 @@
 .espec{
     display: flex;
     flex-direction: column;
-    margin-top: -14px; 
       
 
     &__container-size  {     
-
+        margin-bottom: -10px;
         p { margin-right: 13px} 
 
         &--content {

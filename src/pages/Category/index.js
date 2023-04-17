@@ -1,14 +1,15 @@
-import Products from "../../components/Products";
+
 import React from 'react';
-import { useContext } from 'react';
-import {ProductContext} from '../../contexts/Product';
+import Cards from '../../components/Cards';
+
+
 
 export default class Category extends React.Component{
 
     render() {
         return(
             <>
-                <Products />
+                <Cards />
             </>
         )
     }

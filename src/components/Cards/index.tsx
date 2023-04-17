@@ -1,13 +1,13 @@
 import React from 'react';
 import itens from '../../assets/itens.json';
-import Product from './Product';
-import style from './Products.module.scss';
+import Product from '../Cards/Card/index';
+import style from './cards.module.scss';
 
 
 type Props = typeof itens[0];
 
 
-export default class Products extends React.Component{
+export default class Cards extends React.Component{
    render() {
     return(
         <div className={style.container}>
