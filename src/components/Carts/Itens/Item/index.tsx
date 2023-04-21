@@ -1,7 +1,7 @@
 import React from 'react';
-import itens from '../../../../../assets/itens.json';
+import itens from '../../../../assets/itens.json';
 import style from '../Item/item.module.scss';
-import ColorSizeSelection from '../../../../ColorSize';
+import ColorSizeSelection from '../../../ColorSize';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const item = itens[0]

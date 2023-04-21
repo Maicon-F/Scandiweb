@@ -1,12 +1,12 @@
 import React from 'react';
-import itens from '../../../../assets/itens.json';
-import style from '../cart.module.scss';
+import prods from '../../../assets/itens.json';
+import style from './itens.module.scss';
 import Item from '../Itens/Item/index';
 
 
 //type Props = typeof itens[0];
-const it = itens[1]
-export type Props = { products: typeof it[] };
+const prod = prods[1]
+export type Props = { products: typeof prods };
 
 export default class Itens extends React.Component<Props> {
 
@@ -15,8 +15,9 @@ export default class Itens extends React.Component<Props> {
         return(
             
             <div className={style.item}>
-                {products.map((prod, index)=>(
-                    <Item product={prod} />
+                <hr></hr>
+                {products.map((p, index)=>(
+                    <Item product={p} />
                 ))}
             </div>
         )
