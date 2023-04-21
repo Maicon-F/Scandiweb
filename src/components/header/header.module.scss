@@ -6,7 +6,6 @@
     align-items: center;
     margin: 0px 100px;
 
-
     &__categories{
         display: flex;
         justify-content: space-evenly;
@@ -31,4 +30,17 @@
     }  
 }
 
+.miniCart{
+    position: absolute;
+    left:-300px;
+    z-index: 0;
+    background-color: white ;
+}
 
+.miniCartFatlher{
+    position: relative;
+    background-color: white;
+   
+    
+
+}

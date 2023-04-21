@@ -6,7 +6,7 @@ import itens from '../assets/itens.json';
 import Category from '../pages/Category';
 import PDP from "../pages/PDP";
 import Cart from '../pages/Cart';
-import MiniCart from '../components/Carts/miniCart';
+import MiniCart from '../components/MiniCart/Cart/index';
 import Header from '../components/header';
 
 const item = itens[1];

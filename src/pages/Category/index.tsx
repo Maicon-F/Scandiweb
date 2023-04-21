@@ -18,8 +18,10 @@ export default class Category extends React.Component{
         return(
             <>
                 <Header/>
-                <Title TitleData={myTitle}></Title>
-                <Cards />
+                <div style={{backgroundColor:'rgba(57, 55, 72, 0.22)', display:'inline-block'}}>
+                    <Title TitleData={myTitle}></Title>
+                    <Cards />
+                </div>
             </>
         )
     }

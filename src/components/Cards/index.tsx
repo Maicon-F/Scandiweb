@@ -10,7 +10,7 @@ type Props = typeof itens[0];
 export default class Cards extends React.Component{
    render() {
     return(
-        <div className={style.container}>
+        <div className={style.container} >
             {itens.map(item=>(
               <Product key={item.id} product={item}/>
             ))}

@@ -1,0 +1,49 @@
+.item {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-family: var(--ral);
+  font-weight: 300;
+  line-height: 160%;
+
+  p:first-of-type{
+    margin-bottom: -20px;
+  }
+
+  &__price {
+    font-weight: 600;
+    font-size: 16px;
+    margin: -13px 0 10px 0;
+
+  }
+
+  &-image{
+    display: flex;
+    margin: 40px 20px 0 -10px;
+    &__buttons{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+
+      button{
+        width: 15px;
+        height: 15px;
+        font-size: 8px;
+        background-color: white;
+        opacity: 0.4;
+      }
+    }
+  }
+
+}
+
+img{
+  width: 8vw;
+}
+
+
+
+
+
+
