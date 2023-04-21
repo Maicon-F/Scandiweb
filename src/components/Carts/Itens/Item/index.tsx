@@ -23,10 +23,10 @@ export default class Item extends React.Component<Props> {
 
                 <div className={style['item-image']}>
                     <div className={style['item-image__buttons']}>
-                        <button type="button"><FaPlus  fontWeight={'thin'} /></button>
-                        <button type="button"><FaMinus /></button>
+                        <button type="button"><FaPlus/></button>
+                        <button type="button"><FaMinus/></button>
                     </div>
-                    <img src={item.photo} className={style[" item-image__button item-image__button--add"]} ></img>
+                    <img src={item.photo} className={style["item-image__button item-image__button--add"]} ></img>
                 </div>
             </div>
             <hr></hr>

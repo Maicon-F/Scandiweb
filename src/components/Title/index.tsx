@@ -1,12 +1,23 @@
 import React from "react";
+import style from "./title.module.scss";
+
+interface Props {
+    TitleData:{
+        name: string;
+        styles: {
+            fontSize: string,
+            fontWeight: string
+            }
+    }
+}
 
 
-
-export default class Title extends React.Component{
+export default class Title extends React.Component<Props>{
     render(){
+        const {name, styles} = this.props.TitleData
         return(
-            <div style={{display:"flex", margin:'60px 0 0 100px', fontWeight:'32px', fontFamily:'var(--ral'}}>
-                <h1>CART</h1>
+            <div className={style.container} style={styles}>
+                <p>{name}</p>
             </div>
         )
     }

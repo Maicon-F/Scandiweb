@@ -16,7 +16,7 @@ const item = itens[1];
         return(
             <BrowserRouter>
                 <Routes>
-                    <Route path="/pd" element={<PDP product={item}/>} />
+                    <Route path="/pd" element={<PDP product={itens[2]}/>} />
                     <Route path="/" element={<Category />} />   
                     <Route path="/product" element={<Product />} />    
                     <Route path="/cart" element={<Cart products={itens}/>} />

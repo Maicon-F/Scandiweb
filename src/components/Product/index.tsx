@@ -14,13 +14,13 @@ export default class Product extends React.Component<Props>{
         <div className={style['pd']} >
 
             <div className={style['pd-details']}>
-                <h2 className={'inner-shadow'}>{product.title}</h2>
-                <h3 className={'txt-shadow'}>{product.subtitle}</h3>
+                <p className={style['pd-details__title']}>{product.title}</p>
+                <p className={style['pd-details__subtitle']}>{product.subtitle}</p>
                 <ColorSizeSelection></ColorSizeSelection>
-                <p className={`inner-shadow ${style['pd-details__price-label']}`}>PRICE:</p>
-                <p className={`inner-shadow ${style['pd-details__price']}`}>${product.price}</p>
+                <p className={`${style['pd-details__price-label']}`}>PRICE:</p>
+                <p className={`${style['pd-details__price']}`}>${product.price}</p>
                 <button>ADD TO CART</button>
-                <p  className={`inner-shadow ${style['pd-details__description']}`} >Find stunning women's cocktail dresses and party dresses.
+                <p  className={`${style['pd-details__description']}`} >Find stunning women's cocktail dresses and party dresses.
                  Stand out in lace and metallic cocktail dresses and party
                  dresses from all your favorite brands.</p>
             </div>
