@@ -16,12 +16,6 @@ body {
   font-family: var(--ral);
 }
 
-* {
-  font-family: 'Italiana', serif;
-  font-family: 'Raleway', sans-serif;
-  font-family: 'Roboto', sans-serif;
-  font-family: 'Source Sans Pro', sans-serif;
-}
 
 .inner-shadow{
   background-color: #565656;

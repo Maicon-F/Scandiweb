@@ -1,33 +1,39 @@
+@import-normalize;
 .card {
-    /* Add shadows to create the "card" effect */
-    width: 30%;
-    margin: 3.5em 0em;
-    padding: 1em;
+    width: 27vw;
+    box-sizing: border-box;
+    padding: 20px;
+    margin: 40px 0;
+    font-family: var(--ral);
+    font-size: 18px;
+  
+
+    img{
+      width: 100%;
+      max-width: 100%;
+      margin: auto;
+      padding: auto;
+
+    }
+
+    &__details{
+      p:first{
+        font-weight: 300;
+      }
+      :last-child{
+        font-weight: 500;
+      }
+
+    }
+
+
+  }
+
+  .card:hover{
+      box-shadow: 0 4px 30px 0 rgba(0,0,0,0.2);
+      transition: 0.3s;
+
   }
   
-  /* On mouse-over, add a deeper shadow */
-  .card:hover {
-    box-shadow: 0 4px 30px 0 rgba(0,0,0,0.2);
-    transition: 0.3s;
-  }
-  
-  /* Add some padding inside the card container */
-  .container {
-   
-  }
 
-  .container h2{
-    margin-top: 25px;
-    font-weight: 300;
-    font-size: 24px;
-  }
 
-  .container p{
-    font-weight: 500;
-    font-size: 24px;
-  }
-
-  .image{
-    width: 30vw;
-    height: 24vw;
-  }

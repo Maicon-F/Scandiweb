@@ -10,13 +10,11 @@ export default class Card extends React.Component<{product:Props}>{
     render(){
         const { title, photo, price} = this.props.product;
         return(
-            <div className={style.card}>
-                <div>
+            <div className={style.card}>  
                     <img src={photo} alt={title} className={style.image}/>
-                </div>
-                <div className={style.container}>
-                    <h2>{title}</h2>
-                    <p>${price}</p>
+                <div className={style.card__details}>
+                    <p>{title}</p>
+                    <p>$ {price}</p>
                 </div>
            </div>
         )

@@ -18,7 +18,7 @@ export default class Header extends React.Component {
                     <p>MEN</p>
                     <p>KIDS</p>
                 </div>
-                <img src={bag} style={{maxWidth:'3vw'}}></img>
+                <img src={bag} style={{minWidth:'2vw'}}></img>
                 <div className={style.container__buttons}>
                     <div>
                         <select>

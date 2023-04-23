@@ -5,7 +5,6 @@ import Item from '../Itens/Item/index';
 
 
 //type Props = typeof itens[0];
-const prod = prods[1]
 export type Props = { products: typeof prods };
 
 export default class Itens extends React.Component<Props> {
