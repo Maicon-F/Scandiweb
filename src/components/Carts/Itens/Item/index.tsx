@@ -15,16 +15,10 @@ export default class Item extends React.Component<Props> {
         return (
             <>
                 <div className={style.item}>
-                    <div className={style.item__content}>
-                        <p>
-                            {product.title}
-                        </p>
-                        <p>
-                            {product.subtitle}
-                        </p>
-                        <p className={`${style['item__price']}`}>
-                            ${product.price}
-                        </p>
+                    <div className={style.item__content}>      
+                        <div><p className={`${style['item__content-title']}`}>{product.title}</p></div>
+                        <div><p className={`${style['item__content-subtitle']}`}>{product.subtitle}</p></div>
+                        <div><p className={`${style['item__content-price']}`}>${product.price}</p></div>
                         <ColorSizeSelection></ColorSizeSelection>
                     </div>
                     <div className={style['item-image']}>

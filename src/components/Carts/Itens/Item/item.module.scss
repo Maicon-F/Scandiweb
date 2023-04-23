@@ -5,20 +5,25 @@
   font-size: 30px;
   font-family: var(--ral);
 
-  p:first-of-type{
-    font-weight: 600;
-    display: block;
-  
-  }
-  p:nth-child(2){
-    margin-top: 20px;
-    font-weight: 400;
-  
+  p{
+    margin: auto;
+    padding: auto;
   }
 
-  &__price {
-    font-weight: bold;
-    font-size: 24px;
+  &__content{
+    &-title{
+      font-weight: 600;
+      padding-bottom: 5px;
+    }
+    &-subtitle{
+      font-weight: 400;
+      padding-bottom: 12px;
+    }
+    &-price {
+      font-weight: bold;
+      font-size: 24px;
+      padding-bottom: 12px;
+    }
   }
 
   &-image{
@@ -33,25 +38,23 @@
         height: 50px;
         font-size: 20px;
         background-color: white;
- 
         opacity: 0.4;
       }
     }
+    
+    img{
+      margin-left: 20px;
+      width: 100%;
+      height: 21vw;
+    }
   }
 
-  img{
-    margin-left: 20px;
-    display: inline-block;
-    width: 100%;
-    height: 21vw;
- 
-  }
 
 }
 
 
 hr{
- margin-top: 40px;
+ opacity: 0.4;
 }
 
 
