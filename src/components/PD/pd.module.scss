@@ -1,7 +1,8 @@
 .pd{
     display: flex;
-    margin: 30px 50px;
+    margin: 30px 100px;
     font-size: 30px;
+    
 
     
     &-gallery{
@@ -15,9 +16,9 @@
     }
 
         &-image{
-        margin: 0 0px 0 24px;
+        margin: 0 100px 0 24px;
         img{
-            min-width: 44vw;
+            width: 44vw;
             height: 38vw;
         }
     }
@@ -25,8 +26,7 @@
     &-details{
         display: flex;
         flex-direction: column;
-        margin-top: -40px;
-        max-width: 35vw;
+        max-width: 22vw;
         font-family: var(--rob);
 
     }
