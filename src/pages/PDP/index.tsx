@@ -4,8 +4,8 @@ import itens from '../../assets/itens.json';
 import Header from "../../components/header";
 
 export type Props = {
-    product: typeof itens[0],
-    type: string
+    product: typeof itens[0]
+
 }
 
 
