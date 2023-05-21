@@ -17,7 +17,7 @@ export default class PDP extends React.Component<Props>{
             <div>
                 <Header></Header>
                 <div style={{marginTop:'70px'}} >
-                    <ProductDescription product={product}></ProductDescription>  
+                    <ProductDescription ></ProductDescription>  
                 </div>                
             </div>
         )

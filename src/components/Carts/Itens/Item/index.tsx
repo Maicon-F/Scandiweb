@@ -2,7 +2,7 @@ import React from 'react';
 import itens from '../../../../assets/itens.json';
 import fakeItems from "../../../../assets/fake-cart.json"
 import style from '../Item/item.module.scss';
-import ColorSizeSelection from '../../../ColorSize';
+import ColorSizeSelection from '../../../Attributes';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 
 const item = fakeItems[1]

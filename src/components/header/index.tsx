@@ -10,7 +10,6 @@ import { connect } from 'react-redux';
 import { updateCategory } from '../../adapters/slices/category';
 import client from './../../ApoloClient/client';
 import { GET_ALL_CATEGORIES, GET_ALL_CURRENCIES } from '../../ApoloClient/graphQl';
-import Category from '../../models/category';
 import {displayCart} from '../../adapters/slices/displayCart';
 import Currency from '../../models/prices';
 import { updateCurrency } from '../../adapters/slices/currency';

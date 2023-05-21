@@ -2,31 +2,62 @@ import React from 'react';
 import itens from '../../assets/itens.json';
 import style from '../PD/pd.module.scss';
 import Product from '../Product';
+import { GET_PRODUCT_BY_ID } from '../../ApoloClient/graphQl';
+import client from '../../ApoloClient/client';
 
-const item = itens[3];
-export type Props = {product: typeof item}
+
+let prod:any;
+
+ class ProductDescription extends React.Component<any, any>{
+    constructor(props:any) {
+        super(props);
+        this.getProduct =  this.getProduct.bind(this);
+        this.state = {
+            product: null,
+        }
+    }
 
 
-export default class ProductDescription extends React.Component<Props>{
+    componentDidMount(): void {
+        this.getProduct(window.location.href.split('/')[4])
+        
+    }
+
+
+    async getProduct(id: string) {
+        let res = await client.query({
+          query: GET_PRODUCT_BY_ID(id.toLocaleLowerCase()),
+        });
+        
+        this.setState({
+            product: res.data.product
+        })
+
+      }
+    
    render() {
-    const {product} =this.props;
+    prod = this.state.product;
+    const gallery =prod?prod.gallery:[];
+   
     return(
         <div className={style['pd']} >
             <div className={style['pd-gallery']}>
-                <img src={product.photo}></img>
-                <img src={product.photo}></img>
-                <img src={product.photo}></img>
+                {gallery.map((item:any)=> (
+                    <img src={item}></img>
+                ))}
             </div>
 
             <div className={style['pd-image']}>
-                <img src={product.photo}></img>
+                <img src={gallery[0]}></img>
             </div>
 
             <div className={style['pd-details']}>
-                <Product product={product}></Product>
+                <Product prod={prod}></Product>
             </div>
         </div>
     )  
    }
 }
+
+export default ProductDescription;
 

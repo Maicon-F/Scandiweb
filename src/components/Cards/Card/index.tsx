@@ -25,7 +25,7 @@ class Card extends React.Component<any,any>{
             <div className={style.card} >  
                     <div className={style.card__imageContainer}>
                         <img src={gallery[0]} alt={name}/>
-                        <a className={style.addToCartIcon} href="/pd" ><img src={addToCartIcon}/> </a>
+                        <a className={style.addToCartIcon} href={`product-description/${id}`} ><img src={addToCartIcon}/> </a>
                     </div>
                 <div className={style.card__details}>
                     <p>{name}</p>

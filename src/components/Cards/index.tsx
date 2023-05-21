@@ -33,9 +33,7 @@ class Cards extends React.Component<any, any> {
     this.setState({
       products: [...res.data.category.products]
     })
- 
-    console.log(res);
-    
+
   }
 
 
@@ -44,7 +42,7 @@ class Cards extends React.Component<any, any> {
     return (
       <div className={style.containerParent}>
       <div className={style.container} >
-        {this.state.products.map((item: { id: React.Key | null | undefined; }) => (
+        {this.state.products.map((item:any) => (
           <Product key={item.id} product={item} />
         ))}
       </div>
