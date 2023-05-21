@@ -16,7 +16,7 @@ export default class Itens extends React.Component<Props> {
             
             <div className={style.item}>
                 {products.map((p, index)=>(
-                    <Item product={p} />
+                    <Item key={p.id} product={p} />
                 ))}
             </div>
         )

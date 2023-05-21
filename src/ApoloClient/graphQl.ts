@@ -6,15 +6,17 @@ export const GET_ALL_CATEGORIES = gql`
           name
       }
   }
-`
-export const GET_ALL_PRICES = gql`
+`;
+
+export const GET_ALL_CURRENCIES = gql`
 query {
   currencies {
     label
     symbol
   }
 }
-`
+`;
+
 export const GET_PRODUCTS_BY_CATEGORY = (productsCategory: string) => gql`
 query{
   category(input: {title: "${productsCategory}"}) {
@@ -42,7 +44,8 @@ query{
     }
   }
 }
-`
+`;
+
 export const GET_PRODUCT_BY_ID = (productId: string) => gql`
 query{
   product(id: "${productId}") {
@@ -70,4 +73,4 @@ query{
     }
   }
 }
-`
+`;

@@ -1,4 +1,13 @@
-export default class Prices {
-    private label: string = '';
-    private symbol: string = '';
+export default class Currency {
+    public label: string = '';
+    public symbol: string = '';
+
+    constructor(label:string, symbol:string){
+        this.label = label;
+        this.symbol = symbol;
+    }
+    
 }
+
+
+

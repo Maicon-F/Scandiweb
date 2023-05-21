@@ -1,9 +1,9 @@
 import  AttributeSet  from "./attributeSet";
-import Prices  from "./prices";
+import Currency  from "./prices";
 
 
 export default class Product {
-    private prices: Prices[] = [];
+    private prices: Currency[] = [];
     private category: string = '';
     private description: string = '';
     private gallery: string[] = [];

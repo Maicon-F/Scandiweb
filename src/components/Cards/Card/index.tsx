@@ -1,50 +1,51 @@
 import React from 'react';
-import itens from '../itens.json';
 import style from './card.module.scss';
 import {connect} from 'react-redux';
-import { increment } from '../../../adapters/slices';
-
-type Props = typeof itens[0];
-
+import { updateCategory } from '../../../adapters/slices/category';
+import addToCartIcon from '../../../assets/icons/circle_icon.svg';
 
 class Card extends React.Component<any,any>{
-    static props: { dispatch: any; };
-    constructor(props:any){
-        
+    constructor(props:any){ 
         super(props);
+    }
+
+    componentDidMount(): void {
         
     }
-    
 
-    handle(){
-        const {dispatch} =this.props
-        dispatch(increment())
-    }
-    
+
     render(){
-        const {teste} = this.props;
-        console.log('teste:', teste.counter.value);
-        const { title, photo, price} = this.props.product;
+        const {currency} =  this.props;
+        const { name, id, gallery, prices} = this.props.product; 
+        let price = prices.filter(function(p:any){
+            return p.currency.symbol == currency;
+        })
+       
         return(
-            <div className={style.card}>  
-                    <img src={photo} alt={title} className={style.image}/>
+            <div className={style.card} >  
+                    <div className={style.card__imageContainer}>
+                        <img src={gallery[0]} alt={name}/>
+                        <a className={style.addToCartIcon} href="/pd" ><img src={addToCartIcon}/> </a>
+                    </div>
                 <div className={style.card__details}>
-                    <p>{title}</p>
-                    <p>$ {price}</p>
+                    <p>{name}</p>
+                    <p>{currency} {price[0].amount}</p>
                 </div>
-                <button onClick={()=> this.handle()} >BUTAO TESTE</button>
            </div>
         )
     }
 }
 
-export interface CounterState {
-    value: number
-  }
+
 const mapStateToProps = (e: any) => {
     return ({
-        teste: e
+        category: e.category,
+        currency: e.currency,
     })
 }
+
+const mapDispatchToProps = (dispatch:any) => ({
+    updateCategory: (payload:string) => dispatch(updateCategory(payload)),
+  });
 
 export default connect(mapStateToProps)(Card)

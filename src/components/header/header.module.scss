@@ -10,36 +10,63 @@
         display: flex;
         justify-content: space-evenly;
         align-items: center;
+        position:'relative';
        p{
             margin-right: 30px;
        } 
+       &--active{
+        color: var(--lemon);
+        text-decoration: none;
+        border-bottom: 1px solid var(--lemon);
+       }
     }
 
     &__buttons{
         display: flex;
         align-items: center;
-        
+        margin-left: 50px;
+        position: relative;
         div{
+            font-size: 18px;
+            label {
+                
             select {
+                position: absolute ;
+                top: 30px;
+                left: 0px; 
                 border: none;
                 outline: none;
-                margin-right: 30px;
-                font-size: 22px;
+                font-size: 18px;
+                font-family: var(--ral);
+                option{
+                    padding: 5px 20px;
+                }
+ 
               }
+            }
+        }
+
+        &--inactive{
+            display:none;
         }
     }  
+
 }
 
 .miniCart{
     position: absolute;
-    left:-300px;
-    z-index: 0;
+    right:0px;
+    z-index: 2;
     background-color: white ;
-    display: none;
+    &--isActive{
+        display: none;
+    }
 }
+
+
 
 .miniCartFatlher{
     position: relative;
-    background-color: white;
 }
+
 

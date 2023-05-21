@@ -1,35 +1,69 @@
 import React from 'react';
-import itens from '../../assets/itens.json';
 import Product from '../Cards/Card/index';
 import style from './cards.module.scss';
-import client from './../../ApoloClient/client';
-import { GET_ALL_CATEGORIES } from '../../ApoloClient/graphQl';
+import client from '../../ApoloClient/client';
+import { GET_PRODUCTS_BY_CATEGORY } from '../../ApoloClient/graphQl';
+import { connect } from 'react-redux';
 
 
-type Props = typeof itens[0];
 
-
-export default class Cards extends React.Component{
-
-  async fetchAllProducts(){
-    const cu = await client.query({
-      query: GET_ALL_CATEGORIES,
-    });
-    console.log("Testing api consumption!:", cu)
+class Cards extends React.Component<any, any> {
+  constructor(props: any) {
+    super(props);
+    this.fetchProductsByCategory = this.fetchProductsByCategory.bind(this)
+    this.state = {
+      products: [],
+    }
   }
 
   componentDidMount(): void {
-    this.fetchAllProducts();
+    this.fetchProductsByCategory(this.props.category)
   }
 
-   render() {
-    return(
-        <div className={style.container} >
-            {itens.map(item=>(
-              <Product key={item.id} product={item}/>
-            ))}
-        </div>
-    )  
-   }
+  componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
+    if (prevProps.category !== this.props.category)
+      this.fetchProductsByCategory(this.props.category)
+  }
+
+  async fetchProductsByCategory(category: string) {
+    let res = await client.query({
+      query: GET_PRODUCTS_BY_CATEGORY(category.toLocaleLowerCase()),
+    });
+  
+    this.setState({
+      products: [...res.data.category.products]
+    })
+ 
+    console.log(res);
+    
+  }
+
+
+  render() {
+  
+    return (
+      <div className={style.containerParent}>
+      <div className={style.container} >
+        {this.state.products.map((item: { id: React.Key | null | undefined; }) => (
+          <Product key={item.id} product={item} />
+        ))}
+      </div>
+      <div className={style.overlay}></div>
+      </div>
+    )
+    
+  }
 }
+
+
+const mapStateToProps = (e: any) => {
+  return ({
+    category: e.category
+    
+  })
+}
+
+
+
+export default connect(mapStateToProps)(Cards)
 

@@ -1,7 +1,11 @@
 .container {
     display: flex;
-    justify-content: space-between;
-    margin: 0px 100px;
+    justify-content: space-around;
+    margin: 10px 10vw;
     flex-wrap: wrap;
-
+    z-index: 1;
+   
 }
+
+
+
