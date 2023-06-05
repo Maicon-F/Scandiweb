@@ -17,7 +17,7 @@ interface TitleData {
     }
   }
 
-export default class Cart extends React.Component<Props>{
+export default class Cart extends React.Component<any,any>{
 
     render() {
         const {products} = this.props;
@@ -26,7 +26,7 @@ export default class Cart extends React.Component<Props>{
             <div  style={{display:"flex", flexDirection:'column', justifyContent:'center'}}>
             <Header></Header>
             <Title TitleData={myTitle}></Title>
-            <CartComponent products={products}/>
+            <CartComponent/>
             </div>
         )
     }

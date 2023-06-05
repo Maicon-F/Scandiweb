@@ -11,7 +11,7 @@ import { updateCategory } from '../../adapters/slices/category';
 import client from './../../ApoloClient/client';
 import { GET_ALL_CATEGORIES, GET_ALL_CURRENCIES } from '../../ApoloClient/graphQl';
 import {displayCart} from '../../adapters/slices/displayCart';
-import Currency from '../../models/prices';
+import Currency from '../../models/currency';
 import { updateCurrency } from '../../adapters/slices/currency';
 
 
@@ -117,10 +117,10 @@ class Header extends Component<any, any> {
 }
 
 
-const mapStateToProps = (state: any) => {
+const mapStateToProps = (e: any) => {
     return ({
-        category: state.category,
-        currency: state.currency
+        category: e.category,
+        currency: e.currency
     })
 }
 

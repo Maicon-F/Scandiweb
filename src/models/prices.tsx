@@ -1,13 +1,20 @@
-export default class Currency {
-    public label: string = '';
-    public symbol: string = '';
+import Currency from "./currency"
 
-    constructor(label:string, symbol:string){
-        this.label = label;
-        this.symbol = symbol;
+
+
+export default class Prices {
+    public amount = 0;
+    public currency?: Currency;
+
+
+    constructor(amount:number, cur:Currency){
+        this.amount = amount;
+        this.currency = cur;
     }
-    
-}
 
+    public getAmount(){
+        return this.amount;
+    }
+}
 
 

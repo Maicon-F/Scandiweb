@@ -4,6 +4,7 @@
   align-items: center;
   font-size: 30px;
   font-family: var(--ral);
+  position:relative;
 
   p{
     margin: auto;
@@ -27,11 +28,14 @@
   }
 
   &-image{
+    position:absolute;
+    left: 75vw;
     display: flex;
     &__buttons{
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      align-items: center;
 
       button{
         width: 50px;
@@ -44,8 +48,8 @@
     
     img{
       margin-left: 20px;
-      width: 100%;
-      height: 21vw;
+      max-height: 11vw;
+      width: auto;
     }
   }
 

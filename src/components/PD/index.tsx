@@ -1,12 +1,12 @@
 import React from 'react';
-import itens from '../../assets/itens.json';
 import style from '../PD/pd.module.scss';
-import Product from '../Product';
+import Item from '../Product';
 import { GET_PRODUCT_BY_ID } from '../../ApoloClient/graphQl';
 import client from '../../ApoloClient/client';
 
 
 let prod:any;
+
 
  class ProductDescription extends React.Component<any, any>{
     constructor(props:any) {
@@ -16,7 +16,6 @@ let prod:any;
             product: null,
         }
     }
-
 
     componentDidMount(): void {
         this.getProduct(window.location.href.split('/')[4])
@@ -32,8 +31,8 @@ let prod:any;
         this.setState({
             product: res.data.product
         })
-
       }
+
     
    render() {
     prod = this.state.product;
@@ -52,7 +51,7 @@ let prod:any;
             </div>
 
             <div className={style['pd-details']}>
-                <Product prod={prod}></Product>
+                <Item prod={prod}></Item>
             </div>
         </div>
     )  

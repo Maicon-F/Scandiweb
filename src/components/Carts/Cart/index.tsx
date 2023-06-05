@@ -6,13 +6,13 @@ import style from "./cart.module.scss";
 export type Props ={
   products: typeof prods[0][];
 }
-export default class CartComponent extends React.Component<Props>{
+export default class CartComponent extends React.Component<any, any>{
     render() {
-      const {products} = this.props;
+     
         return(
 
             <div className={style.cart}>
-             <Itens products={products}/>
+             <Itens />
           </div>
                       
         )

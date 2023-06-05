@@ -3,9 +3,11 @@ import counterReducer from '../slices/index';
 import categoryReducer from '../slices/category';
 import DisplayCart from '../slices/displayCart';
 import currencyReducer from '../slices/currency';
+import UpdateCartReducer from '../slices/updateCart';
 
 export const store = configureStore({
   reducer: {
+    updateCart: UpdateCartReducer,
     counter: counterReducer,
     category: categoryReducer,
     displayCart: DisplayCart,

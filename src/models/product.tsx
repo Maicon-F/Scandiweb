@@ -1,15 +1,18 @@
 import  AttributeSet  from "./attributeSet";
-import Currency  from "./prices";
+import Price  from "./prices";
 
 
 export default class Product {
-    private prices: Currency[] = [];
-    private category: string = '';
-    private description: string = '';
-    private gallery: string[] = [];
-    private attributes: AttributeSet[] = [];
-    private inStock: boolean = true;
-    private brand: string = '';
-    private id: string = '';
+    static id(id: any): string {
+        throw new Error('Method not implemented.');
+    }
+    public prices: Price[] = [];
+    public category: string = '';
+    public description: string = '';
+    public gallery: string[] = [];
+    public attributes: AttributeSet[] = [];
+    public inStock: boolean = true;
+    public brand: string = '';
+    public id: string = '';
 
 }

@@ -10,9 +10,7 @@ class Card extends React.Component<any,any>{
     }
 
     componentDidMount(): void {
-        
     }
-
 
     render(){
         const {currency} =  this.props;
@@ -24,8 +22,8 @@ class Card extends React.Component<any,any>{
         return(
             <div className={style.card} >  
                     <div className={style.card__imageContainer}>
-                        <img src={gallery[0]} alt={name}/>
-                        <a className={style.addToCartIcon} href={`product-description/${id}`} ><img src={addToCartIcon}/> </a>
+                       <a href={`/product-description/${id}`}><img src={gallery[0]} alt={name}/></a>
+                        <a className={style.addToCartIcon} href={`cart`} ><img src={addToCartIcon}/> </a>
                     </div>
                 <div className={style.card__details}>
                     <p>{name}</p>
