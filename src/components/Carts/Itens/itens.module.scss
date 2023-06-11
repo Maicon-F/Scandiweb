@@ -1,0 +1,19 @@
+table{
+    font-family: var(--ral);
+    font-size: 24px;
+    margin-bottom: 5px;
+
+    .value{
+        font-weight: bold;
+    }
+
+    .total{
+        font-weight:500;
+    }
+}
+
+td{
+    padding: 4px
+}
+
+

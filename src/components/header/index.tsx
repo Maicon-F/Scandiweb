@@ -35,8 +35,16 @@ class Header extends Component<any, any> {
     }
 
     handle(event: any) {
+        let currentPath = window.location.href.split('/')[3];
+        var category = event.target.innerText;
+        
+        if(currentPath != "home")
+        window.location.href = "/home";
+
         const {updateCategory} = this.props
-        updateCategory(event.target.innerText);
+        updateCategory(category);
+ 
+           
     }
 
     componentDidMount() {
@@ -46,13 +54,13 @@ class Header extends Component<any, any> {
     }
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
-        const { updateCategory, updateCurrency } = this.props;
+        const { updateCurrency } = this.props;
         if(this.state.currency != this.props.currency)
             updateCurrency(this.state.currency);
       
     }
 
-
+    
     async fetchAllCategories() {
         let res = await client.query({
             query: GET_ALL_CATEGORIES,
@@ -92,7 +100,7 @@ class Header extends Component<any, any> {
                     {this.state.categories.map((c: any) => 
                     <p className={this.props.category.toUpperCase() === c.name.toUpperCase() ? style[`container__categories--active`]: ""} onClick={(e) => this.handle(e)}>{c.name.toUpperCase()}</p>)}
                 </div>
-                <img src={bag} style={{ maxWidth: '3vw' }}></img>
+                <a href={"/cart"}><img src={bag} style={{ maxWidth: '3vw' }}></img></a>
                 <div className={style.container__buttons}> 
                     <div >
                         <label>{this.state.currency}

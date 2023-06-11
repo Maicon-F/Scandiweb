@@ -1,4 +1,5 @@
 import BagItem from '../models/bagItem';
+import Prices from '../models/prices';
 
 export function addToCart(myBagItem: BagItem){
 
@@ -126,3 +127,42 @@ export function updateItem(myBagItem: BagItem){
  
         localStorage.setItem('products', JSON.stringify(arr));    
 }
+
+
+export function getTotal(cur: string) :number[]{
+    if (cur =='')
+        return [0];
+    
+    var map:Map<string, BagItem> = new Map([]);
+    var jsonStr:any = localStorage.getItem('products');
+    var parsedData = JSON.parse(jsonStr);
+    var res: number[] = [0];
+    res[0] = 0;
+    res[1] = 0;
+
+    if(parsedData !=null){
+        //convert to Map
+        parsedData.forEach(function(item:any) {
+            var key = item[0];
+            var value = item[1];
+            var bagItem = new BagItem(value.product, value.quantity, value.selectedSize, value.selectedCapacity, value.selectedColor);
+            map.set(key, bagItem);
+            res[1] = res[1] + value.quantity;
+          });
+        } 
+
+        map.forEach((value, key) => {
+            const prices:Prices[] = value?.product.prices;
+            const quantity:number =  value?.getQuantity();
+            let price:Prices[] = [];
+            price = prices.filter(function(p:any){
+                return p.currency.symbol == cur;      
+          });  
+
+        res[0] = res[0] + price[0].amount*quantity;
+        
+          
+        });
+          return res;
+}
+

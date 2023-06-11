@@ -15,4 +15,16 @@ export default class Product {
     public brand: string = '';
     public id: string = '';
 
+
+
+
+    public getPrices(){
+        return this.prices;
+    }
+
 }
+
+
+
+
+

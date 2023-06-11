@@ -7,6 +7,8 @@ import { addToCart, removeFromCart, updateItem } from '../../../../utils/addToCa
 import { connect } from 'react-redux';
 import { updateCart } from '../../../../adapters/slices/updateCart';
 import BagItem from '../../../../models/bagItem';
+import Prices from '../../../../models/prices';
+import Currency from '../../../../models/currency';
 
 
 class Item extends React.Component<any, any> {
@@ -21,6 +23,7 @@ class Item extends React.Component<any, any> {
             selectedSize: '',
             selectedCapacity: '',
             selectedColor: '',
+            amount : 0,
         }
     }
 
@@ -62,21 +65,41 @@ class Item extends React.Component<any, any> {
         updateItem(myBagItem);
       };
 
+    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
+
+        if(prevProps.currency != this.props.currency){
+        const product: ProductModel = this.props.product;
+        const prices:Prices[] = product?.prices;
+        let currency = this.props.currency;
+        let price:Prices[] = [];
+    
+        if(prices && typeof prices == "object" && currency !=""){        
+            price = prices.filter(function(p:any){
+                return p.currency.symbol == currency;
+            });
+            this.setState({
+                amount: price[0].amount
+            }) 
+        }
+    }
+    }
+    
+
 
     render() {
-        const { quantity } = this.props;
+        let { quantity, currency } = this.props;
         const product: ProductModel = this.props.product; 
         const attributes:any = product?product.attributes:[];
         const bagItem:BagItem = this.props.bagItem;
-        console.log("BAG",bagItem)
-
+          
+             
         return (
             <>
                 <div className={style.item}>
                     <div className={style.item__content}>      
                         <div><p className={`${style['item__content-title']}`}>{product?.id}</p></div>
                         <div><p className={`${style['item__content-subtitle']}`}>{product?.brand}</p></div>
-                        <div><p className={`${style['item__content-price']}`}>${product?.prices[0].amount}</p></div>
+                        <div><p className={`${style['item__content-price']}`}>{currency}{this.state.amount}</p></div>
                         <ColorSizeSelection attributes={attributes} selectedSize={this.handleChildSizeData} initAttributes={[bagItem.selectedSize, bagItem.selectedCapacity, bagItem.selectedColor]} selectedCapacity={this.handleChildCapacityData} selectedColor={this.handleChildColorData}></ColorSizeSelection>
                     </div>
                     <div className={style['item-image']}>

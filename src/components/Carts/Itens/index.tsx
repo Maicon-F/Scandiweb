@@ -4,8 +4,9 @@ import style from './itens.module.scss';
 import Item from '../Itens/Item/index';
 import Bag from '../../../models/bagItem'
 import { connect } from 'react-redux';
-import { getCartItems } from '../../../utils/addToCard';
+import { getCartItems, getTotal } from '../../../utils/addToCard';
 import { updateCart } from '../../../adapters/slices/updateCart';
+import Button from '../../Button';
 
 //type Props = typeof itens[0];
 export type Props = { products: typeof prods };
@@ -15,14 +16,18 @@ class Itens extends React.Component<any, any> {
     constructor(props:any){
         super(props);
        this.getProducts = this.getProducts.bind(this);
+       this.getTotal =  this.getTotal.bind(this);
        this.state = {
         products: [Bag],
-
+        total: 0,
+        quantity: 0,
        }
     }
 
     componentDidMount(): void {
         this.getProducts();
+        this.getTotal();
+        
     }
   
     getProducts(){
@@ -30,23 +35,53 @@ class Itens extends React.Component<any, any> {
         this.setState({
             products: [...bag]
         }) 
+
     }
 
+    getTotal(){
+        var res = getTotal(this.props.currency);
+        this.setState({
+            total: res[0],
+            quantity: res[1],
+        })
+    }
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
         if(prevProps.update != this.props.update)
             this.getProducts();  
+        
+        if(prevProps.update != this.props.update || prevProps.currency != this.props.currency)
+            this.getTotal();
     }
 
 
     render(){    
-
+   
         return(
             <div className={style.item}>
                 <hr></hr>
                 {this.state.products.map((b:Bag, index:number)=>(
-                    <Item bagItem={b} product={b.product} quantity={b.quantity} key={index}  />
+                    <Item bagItem={b} product={b.product} quantity={b.quantity} key={index}/>
                 ))}
+              
+                <table>
+                <tr>
+                    <td>Tax 21%:</td>
+                    <td className={style.value}>{this.props.currency}{(this.state.total*.21).toFixed(2)}</td>
+                </tr>
+                <tr>
+                    <td>Quantity:</td>
+                    <td className={style.value}>{this.state.quantity}</td>
+                </tr>
+                <tr>
+                    <td className={style.total}>Total</td>
+                    <td className={style.value}>{this.props.currency}{(this.state.total).toFixed(2)}</td>
+                </tr>
+                 </table>
+
+                <div style={{width:'30%'}}>  
+                <a ><Button name={"Order"}></Button></a>
+                </div>  
             </div>
         )
     }

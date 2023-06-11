@@ -1,5 +1,5 @@
 export  default class Items {
-        public displayValue: String = '';
-        public value: String = '';
-        public id: String = '';
+        public displayValue: string = '';
+        public value: string = '';
+        public id: string = '';
       }

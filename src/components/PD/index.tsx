@@ -19,7 +19,7 @@ let prod:any;
 
     componentDidMount(): void {
         this.getProduct(window.location.href.split('/')[4])
-        
+            
     }
 
 

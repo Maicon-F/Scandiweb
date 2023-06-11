@@ -7,14 +7,11 @@ export default class Prices {
     public currency?: Currency;
 
 
-    constructor(amount:number, cur:Currency){
+    constructor(amount:number){
         this.amount = amount;
-        this.currency = cur;
     }
 
-    public getAmount(){
-        return this.amount;
-    }
+    
 }
 
 

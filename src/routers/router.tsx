@@ -60,11 +60,12 @@ const item = itens[1];
     
                 <Routes>
                     <Route path="/pd" element={<PDP product={itens[0]}/>} />
-                    <Route path="/" element={<CategoryComponent />} />   
-                    <Route path="/product" element={<ProductComponent product={itens[0]}/>} />    
-                    <Route path="/cart" element={<Cart products={fakeItems}/>} />
+                    <Route path="/home" element={<CategoryComponent />} />   
+                    <Route path="/product" element={<ProductComponent/>} />    
+                    <Route path="/cart" element={<Cart/>} />
                     <Route path="/mini-cart" element={<MiniCart products={fakeItems} />} />
                     <Route path="/header" element={<Header/>} />
+                    <Route path="/" element={<CategoryComponent />} />
                 </Routes>
             </BrowserRouter>
     )

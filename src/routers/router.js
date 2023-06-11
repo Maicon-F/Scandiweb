@@ -18,7 +18,8 @@ const item = itens[1];
             <BrowserRouter>
                 <Routes>
                     <Route path="/product-description/:id" element={<PDP/>} />
-                    <Route path="/" element={<Category />} />   
+                    <Route path="/home" element={<Category />} />   
+                    <Route path="/" element={<Category />} /> 
                     <Route path="/product" element={<Product />} />    
                     <Route path="/cart" element={<Cart products={fakeItems}/>} />
                     <Route path="/mini-cart" element={<MiniCart products={fakeItems} />} />
