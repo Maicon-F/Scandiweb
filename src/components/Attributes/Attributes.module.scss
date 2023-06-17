@@ -1,9 +1,9 @@
 
 
-.espec{
+.primary{
     display: flex;
     flex-direction: column;  
-    &__container-size  {     
+    .container-size  {     
         margin-bottom: 10px;
         &--content {
             width: 55px;
@@ -18,13 +18,16 @@
             margin-right: 10px;
         }     
     }
-    &__title {
+
+
+    .title {
         padding: 5px 0;
         font-family: var(--rob);
         font-weight: bold;
         font-size: 18px; 
     }
-    &__container-color{
+    
+    .container-color{
         margin-right: 6px;
         max-width: 32px;
         max-height: 32px;
@@ -38,6 +41,66 @@
     
 }
 
+.secundary{
+    display: flex;
+    flex-direction: column;
+    font-size: 16px;
+      
+    .container-size  {    
+        &--content {
+            height: 15px;
+            min-width: 25px;
+            padding: 4px;
+            display: inline-flex;
+            align-items: center;
+            justify-items: center;
+            justify-content: center;
+            border: rgb(100, 98, 98) solid 0.25px;
+            font-family: var(--ssp);
+            font-size: 14px;
+            margin-right: 5px;
+            cursor: pointer;  
+        }     
+    }
+
+    .title {
+        padding: auto;
+        font-family: var(-ral);
+        font-size: 14px;
+    }
+
+
+    .container-color{
+        margin-right: 6px;
+        max-width: 20px;
+        max-height: 20px;
+        display: inline-block;
+        p {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;  
+        }
+    }
+
+    .innerColor{
+        width: 16px;
+        height: 16px;
+        cursor: pointer;  
+    }
+    
+    
+    .outColor{
+        margin-right: 6px;
+        max-width: 16px;
+        max-height: 16px;
+        display: inline-block;
+    }
+
+}
+
+
+
+
 
 .selected{
     background-color: black;
@@ -46,19 +109,6 @@
 
 
 
-.innerColor{
-    width: 32px;
-    height: 32px;
-    cursor: pointer;  
-}
-
-
-.outColor{
-    margin-right: 6px;
-    max-width: 32px;
-    max-height: 32px;
-    display: inline-block;
-}
 
 .color--selected{
     border:#5ECE7B solid 3px;

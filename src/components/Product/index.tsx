@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { createRef } from 'react';
 import Attributes from '../Attributes/index';
 import style from '../Product/product.module.scss';
 import { connect } from 'react-redux';
@@ -9,6 +9,8 @@ import { addToCart } from '../../utils/addToCard';
 
 
 class Product extends React.Component<any, any>{
+    private htmlRef = createRef<HTMLDivElement>();
+
     constructor(props:any){
         super(props);
         this.AddToCart = this.AddToCart.bind(this);
@@ -43,8 +45,12 @@ class Product extends React.Component<any, any>{
    render() {
     const {prod } = this.props;
     const attributes:any = prod?prod.attributes:[];
-
     const {currency} =  this.props;
+    
+    if (this.htmlRef.current) {
+        this.htmlRef.current.innerHTML = prod?.description;
+      }
+
     const price = prod?.prices.filter(function(p:any){
         return p.currency.symbol == currency;
     });
@@ -60,7 +66,7 @@ class Product extends React.Component<any, any>{
                 <p className={`${style['pd-details__price-label']}`}>PRICE:</p>
                 <p className={`${style['pd-details__price']}`}>${p}</p>
                 <a href={`/cart`}><button onClick={()=>this.AddToCart(prod)}>ADD TO CART</button></a>
-                <p className={`${style['pd-details__description']}`} >{prod?.description}</p>
+                <p className={`${style['pd-details__description']}`} ref={this.htmlRef}></p>
             </div>
         </div>
     )  

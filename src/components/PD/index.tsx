@@ -3,6 +3,7 @@ import style from '../PD/pd.module.scss';
 import Item from '../Product';
 import { GET_PRODUCT_BY_ID } from '../../ApoloClient/graphQl';
 import client from '../../ApoloClient/client';
+import Carousel from '../Slider';
 
 
 let prod:any;
@@ -39,19 +40,18 @@ let prod:any;
     const gallery =prod?prod.gallery:[];
    
     return(
-        <div className={style['pd']} >
-            <div className={style['pd-gallery']}>
-                {gallery.map((item:any)=> (
-                    <img src={item}></img>
-                ))}
+        < div >   
+            <div className={style['pd']} >
+            <div className={style['carousel-wrapper']}>
+                <Carousel images={gallery}></Carousel>
             </div>
+                <div className={style['pd-image']}>
+                    <img src={gallery[0]}></img>
+                </div>
 
-            <div className={style['pd-image']}>
-                <img src={gallery[0]}></img>
-            </div>
-
-            <div className={style['pd-details']}>
-                <Item prod={prod}></Item>
+                <div className={style['pd-details']}>
+                    <Item prod={prod}></Item>
+                </div>
             </div>
         </div>
     )  

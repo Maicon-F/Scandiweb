@@ -3,13 +3,13 @@ import Itens from '../Itens';
 import style from "./cart.module.scss";
 
 
-export default class CartComponent extends React.Component<any, any>{
+export default class MiniCartComponent extends React.Component<any, any>{
     render() {
      
         return(
 
             <div className={style.cart}>
-             <Itens isMiniCart={false} />
+             <Itens isMiniCart={true} />
           </div>
                       
         )

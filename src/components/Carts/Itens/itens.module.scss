@@ -10,10 +10,46 @@ table{
     .total{
         font-weight:500;
     }
+
+   
 }
 
 td{
     padding: 4px
 }
 
+.checkout{
+    width: 13vw;
+    padding: 14px 10px;
+    margin: 0px 10px;
+    font-family: var(--ral);
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border:none;
+    background-color:#5ECE7B;
+    color: white;
+    width:30vw;
+    }
 
+
+.checkoutButtons {
+    width: 13vw;
+    padding: 14px 10px;
+    margin: 0px 10px;
+    font-family: var(--ral);
+    font-weight: 600;
+    font-size: 16px;
+    margin-bottom: 30px;
+    border:none;
+    background-color:#5ECE7B;
+    color: white;
+
+}
+
+.miniCart--buttons{
+ display: flex;
+ justify-content: space-evenly;
+ align-items: center;
+
+}

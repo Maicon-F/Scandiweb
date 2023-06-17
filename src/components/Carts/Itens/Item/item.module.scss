@@ -1,6 +1,7 @@
-.item {
+.primary{
   display: flex;
   justify-content: space-between;
+  position: relative;
   align-items: center;
   font-size: 30px;
   font-family: var(--ral);
@@ -11,7 +12,7 @@
     padding: auto;
   }
 
-  &__content{
+  .content{
     &-title{
       font-weight: 600;
       padding-bottom: 5px;
@@ -27,9 +28,9 @@
     }
   }
 
-  &-image{
-    position:absolute;
-    left: 75vw;
+  .image{
+    position: absolute;
+    left: 1000px;
     display: flex;
     &__buttons{
       display: flex;
@@ -41,14 +42,14 @@
         width: 50px;
         height: 50px;
         font-size: 20px;
-        background-color: white;
         opacity: 0.4;
       }
     }
     
     img{
-      margin-left: 20px;
-      max-height: 11vw;
+
+      right: 200px;
+      max-height: 14vw;
       width: auto;
     }
   }
@@ -58,9 +59,70 @@
 
 
 hr{
- opacity: 0.4;
-}
+  opacity: 0.4;
+ }
+ 
 
+
+.secondary{
+  display: flex;
+  position:relative;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 16px;
+  font-family: var(--ral);
+  font-weight: 300;
+  line-height: 160%;
+  z-index: 1000;
+
+  p{
+    margin: 0;
+    padding: 0;
+  }
+
+  .content{
+    &-title{
+      font-weight: 300;
+      padding-bottom: 5px;
+    }
+    &-subtitle{
+      font-weight: 300;
+      padding-bottom: 12px;
+    }
+    &-price {
+      font-weight: 600;
+     
+    }
+  }
+
+
+  .image{
+    display: flex;
+    position: absolute;
+    left: 200px;
+    margin-left: 5px;
+    &__buttons{
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+ 
+      button{
+        width: 25px;
+        height: 25px;
+        font-size: 8px;
+        opacity: 0.4;
+      }
+    }
+  }
+
+  img{
+    margin-left: 2px;
+    height: 10vw;
+    width:auto;
+  }
+  
+
+}
 
 
 

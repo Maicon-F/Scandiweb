@@ -6,7 +6,6 @@ import Bag from '../../../models/bagItem'
 import { connect } from 'react-redux';
 import { getCartItems, getTotal } from '../../../utils/addToCard';
 import { updateCart } from '../../../adapters/slices/updateCart';
-import Button from '../../Button';
 
 //type Props = typeof itens[0];
 export type Props = { products: typeof prods };
@@ -56,32 +55,56 @@ class Itens extends React.Component<any, any> {
 
 
     render(){    
-   
+        const {isMiniCart} = this.props;
+        const miniCartDisplayStyle = {
+            display: isMiniCart? '' : 'none'
+          };
+          const cartDisplayStyle = {
+            display: isMiniCart? 'none' : ''
+          };
+      
+
         return(
-            <div className={style.item}>
+            
+            <div>
+                <p style={{...miniCartDisplayStyle, marginTop:'40px',fontFamily:' var(--ral)' }}><b>My Bag.</b> {this.state.quantity} items</p>
                 <hr></hr>
                 {this.state.products.map((b:Bag, index:number)=>(
-                    <Item bagItem={b} product={b.product} quantity={b.quantity} key={index}/>
+                    <Item bagItem={b} product={b.product} quantity={b.quantity} key={index} isMiniCart={isMiniCart}/>
                 ))}
               
-                <table>
-                <tr>
-                    <td>Tax 21%:</td>
-                    <td className={style.value}>{this.props.currency}{(this.state.total*.21).toFixed(2)}</td>
-                </tr>
-                <tr>
-                    <td>Quantity:</td>
-                    <td className={style.value}>{this.state.quantity}</td>
-                </tr>
-                <tr>
-                    <td className={style.total}>Total</td>
-                    <td className={style.value}>{this.props.currency}{(this.state.total).toFixed(2)}</td>
-                </tr>
-                 </table>
-
-                <div style={{width:'30%'}}>  
-                <a ><Button name={"Order"}></Button></a>
-                </div>  
+                <div style={cartDisplayStyle}>
+                    <table>
+                        <thead></thead>
+                        <tbody>
+                            <tr>
+                                <td>Tax 21%:</td>
+                                <td className={style.value}>{this.props.currency}{(this.state.total*.21).toFixed(2)}</td>
+                            </tr>
+                            <tr>
+                                <td>Quantity:</td>
+                                <td className={style.value}>{this.state.quantity}</td>
+                            </tr>
+                            <tr>
+                                <td className={style.total}>Total</td>
+                                <td className={style.value}>{this.props.currency}{(this.state.total).toFixed(2)}</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <a ><button className={style.checkoutButtons} style={{width:'25vw', margin:'20px 0px'}}>ORDER</button></a> 
+                </div>
+                
+                <div style={miniCartDisplayStyle}>
+                    <div style={{display:'flex', justifyContent:'space-between', fontSize:'16px', margin:'0px 10px'}}>
+                        <p style={{fontWeight:'500', fontFamily:'var(--rob)'}}>Total</p>
+                        <p style={{fontWeight:'bold'}}>{this.props.currency}{(this.state.total).toFixed(2)}</p>
+                    </div>
+                    <div className={style['miniCart--buttons']}>
+                        <a ><button className={style.checkoutButtons} style={{backgroundColor:'white', color:'black', border:'1.5px solid black'}}> View Bag</button></a>
+                        <a ><button className={style.checkoutButtons} >Checkout</button></a>
+                    </div> 
+                </div>   
+               
             </div>
         )
     }

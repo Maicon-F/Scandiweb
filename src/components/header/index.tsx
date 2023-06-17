@@ -4,7 +4,7 @@ import style from './header.module.scss';
 import bag from "../../assets/icons/logo_transparent.svg"
 import arrowUp from "../../assets/icons/up.svg"
 import arrowDown from "../../assets/icons/down.svg"
-import MiniCart from '../MiniCart/Cart';
+import MiniCart from '../Carts/mini';
 import itens from '../../assets/itens.json';
 import { connect } from 'react-redux';
 import { updateCategory } from '../../adapters/slices/category';
@@ -95,7 +95,7 @@ class Header extends Component<any, any> {
      
         return (
 
-            <div className={style.container}>
+            <div className={style.container}> 
                 <div className={`${style.container__categories}`}>
                     {this.state.categories.map((c: any) => 
                     <p className={this.props.category.toUpperCase() === c.name.toUpperCase() ? style[`container__categories--active`]: ""} onClick={(e) => this.handle(e)}>{c.name.toUpperCase()}</p>)}
@@ -111,12 +111,16 @@ class Header extends Component<any, any> {
                             </select>  
                         </label>            
                     </div>
-                    <div className={style.miniCartFatlher}> 
-                    <img className={`${this.state.dispOps ?style[`container__buttons--inactive`]:'' }`} src={arrowDown} style={{ maxWidth: '1vw', paddingLeft:'6px' }} onClick={() => this.setState({ dispOps:true})} />
-                    <img className={`${this.state.dispOps ?'':style[`container__buttons--inactive`] }`} src={arrowUp} style={{ maxWidth: '1vw', paddingLeft:'6px' }} onClick={() => this.setState({ dispOps:false})} />
-                        <FiShoppingCart style={{ fontSize: '24px', marginLeft:'20px' }} onClick={()=> this.handleMiniCart()} />
-                        <div className={`${style.miniCart} ${this.state.hideCart? style['miniCart--isActive']:''}`}><MiniCart products={itens} /></div>
-                    </div>
+                  
+                <img className={`${this.state.dispOps ?style[`container__buttons--inactive`]:'' }`} src={arrowDown} style={{ maxWidth: '1vw', paddingLeft:'6px' }} onClick={() => this.setState({ dispOps:true})} />
+                <img className={`${this.state.dispOps ?'':style[`container__buttons--inactive`] }`} src={arrowUp} style={{ maxWidth: '1vw', paddingLeft:'6px' }} onClick={() => this.setState({ dispOps:false})} />
+                
+                     
+                <div className={style.miniCartFatlher}>        
+                    <FiShoppingCart style={{ fontSize: '24px', marginLeft:'20px', position:'relative' }} onClick={()=> this.handleMiniCart()} />
+                    <div className={`${style.miniCart} ${this.state.hideCart? style['miniCart--isActive']:''}`}><MiniCart  /></div>
+                </div>
+
                 </div>
             </div>
         )

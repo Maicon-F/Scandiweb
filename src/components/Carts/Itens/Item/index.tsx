@@ -1,6 +1,6 @@
 import React from 'react';
 import style from '../Item/item.module.scss';
-import ColorSizeSelection from '../../../Attributes';
+import Attributes from '../../../Attributes';
 import { FaPlus, FaMinus } from 'react-icons/fa';
 import ProductModel from '../../../../models/product';
 import { addToCart, removeFromCart, updateItem } from '../../../../utils/addToCard';
@@ -8,7 +8,6 @@ import { connect } from 'react-redux';
 import { updateCart } from '../../../../adapters/slices/updateCart';
 import BagItem from '../../../../models/bagItem';
 import Prices from '../../../../models/prices';
-import Currency from '../../../../models/currency';
 
 
 class Item extends React.Component<any, any> {
@@ -85,9 +84,12 @@ class Item extends React.Component<any, any> {
     }
     
 
-
     render() {
-        let { quantity, currency } = this.props;
+        let { quantity, currency, isMiniCart } = this.props;
+        const primaryClass = style.primary;
+        const secondaryClass = style.secondary;
+        const selectedClass = isMiniCart? secondaryClass : primaryClass;
+
         const product: ProductModel = this.props.product; 
         const attributes:any = product?product.attributes:[];
         const bagItem:BagItem = this.props.bagItem;
@@ -95,20 +97,20 @@ class Item extends React.Component<any, any> {
              
         return (
             <>
-                <div className={style.item}>
-                    <div className={style.item__content}>      
-                        <div><p className={`${style['item__content-title']}`}>{product?.id}</p></div>
-                        <div><p className={`${style['item__content-subtitle']}`}>{product?.brand}</p></div>
-                        <div><p className={`${style['item__content-price']}`}>{currency}{this.state.amount}</p></div>
-                        <ColorSizeSelection attributes={attributes} selectedSize={this.handleChildSizeData} initAttributes={[bagItem.selectedSize, bagItem.selectedCapacity, bagItem.selectedColor]} selectedCapacity={this.handleChildCapacityData} selectedColor={this.handleChildColorData}></ColorSizeSelection>
+                <div className={selectedClass}>
+                    <div className={style.content}>      
+                        <div><p className={`${style['content-title']}`}>{product?.id}</p></div>
+                        <div><p className={`${style['content-subtitle']}`}>{product?.brand}</p></div>
+                        <div><p className={`${style['content-price']}`}>{currency}{this.state.amount}</p></div>
+                        <Attributes attributes={attributes} isMiniCart={isMiniCart} selectedSize={this.handleChildSizeData} initAttributes={[bagItem.selectedSize, bagItem.selectedCapacity, bagItem.selectedColor]} selectedCapacity={this.handleChildCapacityData} selectedColor={this.handleChildColorData}></Attributes>
                     </div>
-                    <div className={style['item-image']}>
-                        <div className={style['item-image__buttons']}>
+                    <div className={style['image']}>
+                        <div className={style['image__buttons']}>
                             <button onClick={()=>{this.handleCart("add")} } type="button"><FaPlus/></button>
                             <p>{quantity}</p>
                             <button onClick={()=>{this.handleCart("remove")}}  type="button"><FaMinus/></button>
                         </div>
-                        <img src={product?.gallery[0]} className={style["item-image__button item-image__button--add"]} ></img>
+                        <img src={product?.gallery[0]} className={style["image__button"]} ></img>
                     </div>
                 </div>
                 <hr></hr>

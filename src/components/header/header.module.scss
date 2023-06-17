@@ -55,9 +55,10 @@
 
 .miniCart{
     position: absolute;
-    right:0px;
+    right: -30px;
+    width: 440px;
     z-index: 2;
-    background-color: white ;
+    background-color: white;
     &--isActive{
         display: none;
     }
@@ -66,7 +67,8 @@
 
 
 .miniCartFatlher{
-    position: relative;
+  
+    
 }
 
 
