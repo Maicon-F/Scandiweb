@@ -17,18 +17,17 @@ interface TitleData {
   class Category extends React.Component<any, any>{
 
     render() {
-        const backgroundColor ='rgba(57, 55, 72, 0.22)';
-        const myTitle: TitleData = { name: "Category Name", styles:{fontSize: "42px", fontWeight:''}};
+        const myTitle: TitleData = { name: "", styles:{fontSize: "42px", fontWeight:''}};
         const { displayCart} = this.props;
         return(
             <div style={{margin:'auto -15px'}}>
                 <div style={{zIndex:'100', position: 'relative'}}>
-                <Header/>
+                    <Header/>
                 </div>
                 <div style={{position:'relative'}} >
                     <Title TitleData={myTitle}></Title>
                     <Cards />
-                    <div  className={displayCart?style['overlay']:''}></div>
+                    <div className={displayCart?style['overlay']:''}></div>
                 </div>
                
             </div>

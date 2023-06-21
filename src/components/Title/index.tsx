@@ -21,6 +21,7 @@ class Title extends React.Component<any, any>{
         const {category} = this.props;
         let title: string = category;
         title = title.charAt(0).toUpperCase() + title.slice(1);
+        title = name?name:title;
         
         return(
             <div className={style.container} style={styles}>

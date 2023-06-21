@@ -5,7 +5,6 @@ import bag from "../../assets/icons/logo_transparent.svg"
 import arrowUp from "../../assets/icons/up.svg"
 import arrowDown from "../../assets/icons/down.svg"
 import MiniCart from '../Carts/mini';
-import itens from '../../assets/itens.json';
 import { connect } from 'react-redux';
 import { updateCategory } from '../../adapters/slices/category';
 import client from './../../ApoloClient/client';
@@ -13,6 +12,8 @@ import { GET_ALL_CATEGORIES, GET_ALL_CURRENCIES } from '../../ApoloClient/graphQ
 import {displayCart} from '../../adapters/slices/displayCart';
 import Currency from '../../models/currency';
 import { updateCurrency } from '../../adapters/slices/currency';
+import { getTotal } from '../../utils/addToCard';
+import updateCart from '../../adapters/slices/updateCart';
 
 
 const currencies = new Currency('','');
@@ -31,8 +32,14 @@ class Header extends Component<any, any> {
             currencies: [currencies],
             currency: '$',
             dispOps: false,
+            quantity: 0,
         };
     }
+
+    handleChildVariable = () => {
+        const res= getTotal(this.state.currency);
+        this.setState({ quantity: res[1] });
+      };
 
     handle(event: any) {
         let currentPath = window.location.href.split('/')[3];
@@ -51,13 +58,22 @@ class Header extends Component<any, any> {
         this.fetchAllCategories();
         this.fetchAllCurrencies();
         updateCategory(this.state.category);
+        this.handleChildVariable();
+        document.addEventListener('click', this.handleClick);
     }
+
+    componentWillUnmount() {
+        document.removeEventListener('click', this.handleClick);
+      }
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
         const { updateCurrency } = this.props;
         if(this.state.currency != this.props.currency)
             updateCurrency(this.state.currency);
-      
+        
+        if(prevProps.updateCart != this.props.updateCart)
+            this.handleChildVariable();
+                   
     }
 
     
@@ -90,6 +106,18 @@ class Header extends Component<any, any> {
         displayCart(this.state.hideCart)
     }
 
+    handleClick = (event: MouseEvent) => {
+        const { displayCart } = this.props;
+        const element = document.getElementById('element');
+    
+        if (element && !element.contains(event.target as Node)) {
+            this.setState({ hideCart: true });
+            displayCart(false);
+          
+        }
+      };
+    
+
 
     render() {
      
@@ -117,7 +145,8 @@ class Header extends Component<any, any> {
                 
                      
                 <div className={style.miniCartFatlher}>        
-                    <FiShoppingCart style={{ fontSize: '24px', marginLeft:'20px', position:'relative' }} onClick={()=> this.handleMiniCart()} />
+                    <FiShoppingCart id="element" style={{ fontSize: '24px', marginLeft:'20px', position:'relative' }} onClick={()=> this.handleMiniCart()} />
+                    <span className={style.counter}>{this.state.quantity}</span>
                     <div className={`${style.miniCart} ${this.state.hideCart? style['miniCart--isActive']:''}`}><MiniCart  /></div>
                 </div>
 
@@ -132,7 +161,8 @@ class Header extends Component<any, any> {
 const mapStateToProps = (e: any) => {
     return ({
         category: e.category,
-        currency: e.currency
+        currency: e.currency,
+        updateCart: e.updateCart
     })
 }
 

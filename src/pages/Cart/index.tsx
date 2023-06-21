@@ -3,11 +3,9 @@ import itens from '../../assets/itens.json';
 import CartComponent from "../../components/Carts/Cart";
 import Header from "../../components/header";
 import Title from '../../components/Title';
+import { connect } from 'react-redux';
+import style from './cart.module.scss';
 
-
-export type Props = {
-    products: typeof itens[0][];
-}
 
 interface TitleData {
     name: string,
@@ -17,17 +15,34 @@ interface TitleData {
     }
   }
 
-export default class Cart extends React.Component<any,any>{
+class Cart extends React.Component<any,any>{
 
-    render() {
-        const {products} = this.props;
-        const myTitle: TitleData = { name: "CART", styles:{fontSize: "32px", fontWeight:'bold'}};
+    render() {   
+        const myTitle: TitleData = { name: "CART", styles:{fontSize: "42px", fontWeight:'bold'}};
+        const {displayCart} = this.props;
+        
         return(
-            <div  style={{display:"flex", flexDirection:'column', justifyContent:'center'}}>
-            <Header></Header>
-            <Title TitleData={myTitle}></Title>
-            <CartComponent/>
+            <div >
+                <div style={{zIndex:'100', position:'relative'}}>
+                    <Header />
+                </div>
+                <div style={{position:'relative'}}>
+                    <Title TitleData={myTitle}></Title>
+                    <CartComponent/>
+                    <div  className={displayCart?style['overlay']:''}></div>
+                </div>
             </div>
         )
     }
 }
+
+
+const mapStateToProps = (e: any) => {
+    return ({
+        displayCart: e.displayCart
+    })
+}
+
+
+
+export default connect(mapStateToProps)(Cart)

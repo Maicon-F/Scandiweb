@@ -100,8 +100,8 @@ class Itens extends React.Component<any, any> {
                         <p style={{fontWeight:'bold'}}>{this.props.currency}{(this.state.total).toFixed(2)}</p>
                     </div>
                     <div className={style['miniCart--buttons']}>
-                        <a ><button className={style.checkoutButtons} style={{backgroundColor:'white', color:'black', border:'1.5px solid black'}}> View Bag</button></a>
-                        <a ><button className={style.checkoutButtons} >Checkout</button></a>
+                        <a ><button className={style.checkoutButtons} style={{backgroundColor:'white', color:'black', border:'1.5px solid black', width:"12vw"}}> View Bag</button></a>
+                        <a ><button className={style.checkoutButtons} style={{width:'12vw'}}>Checkout</button></a>
                     </div> 
                 </div>   
                

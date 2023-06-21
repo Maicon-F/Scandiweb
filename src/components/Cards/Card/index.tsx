@@ -28,22 +28,24 @@ class Card extends React.Component<any,any>{
         let col = color.length > 0? color[0]?.items[0]?.value:"";
 
         var bagItem = new BagItem(p, 0,s, cap, col);
-        console.log("BAGITEM", bagItem);
+        
         addToCart(bagItem);
     }
 
     render(){
         const {currency} =  this.props;
-        const { name, id, gallery, prices} = this.props.product; 
+        const { name, id, gallery, prices, inStock} = this.props.product; 
+        console.log(inStock)
         let price = prices.filter(function(p:any){
             return p.currency.symbol == currency;
         })
        
         return(
-            <div className={style.card} >  
+            <div className={inStock?style.card:style.outOfStock} >  
                     <div className={style.card__imageContainer}>
                        <a href={`/product-description/${id}`}><img src={gallery[0]} alt={name}/></a>
-                        <a className={style.addToCartIcon} href={`cart`} onClick={()=>this.addToCart()}><img src={addToCartIcon}/> </a>
+                       <p className={style['outOfStock-content']} style={{display:inStock?'none':''}} >Out Of Stock</p>
+                        <a className={style.addToCartIcon} href={`cart`} onClick={()=>this.addToCart()}><img src={addToCartIcon}/></a>
                     </div>
                 <div className={style.card__details}>
                     <p>{name}</p>

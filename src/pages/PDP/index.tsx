@@ -1,25 +1,39 @@
 import ProductDescription from "../../components/PD";
 import React from 'react';
-import itens from '../../assets/itens.json';
 import Header from "../../components/header";
-
-export type Props = {
-    product: typeof itens[0]
-
-}
+import { connect } from "react-redux";
+import style from "./pdp.module.scss"
 
 
-export default class PDP extends React.Component<Props>{
+class PDP extends React.Component<any, any>{
+
+    hideMiniCart(){
+        
+    }
 
     render() {
-        const {product} = this.props;
+        const {displayCart} = this.props;
         return(
             <div>
-                <Header></Header>
-                <div style={{marginTop:'70px'}} >
+                <div style={{zIndex:'100', position: 'relative'}}>
+                    <Header></Header>
+                </div>
+                <div style={{ position:'relative'}} >
                      <ProductDescription ></ProductDescription>  
+                     <div className={displayCart?style['overlay']:''}></div>
                 </div>                
+     
             </div>
         )
     }
 }
+
+const mapStateToProps = (e: any) => {
+    return ({
+        displayCart: e.displayCart
+    })
+}
+
+
+
+export default connect(mapStateToProps)(PDP)

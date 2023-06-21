@@ -8,6 +8,9 @@ import { connect } from 'react-redux';
 import { updateCart } from '../../../../adapters/slices/updateCart';
 import BagItem from '../../../../models/bagItem';
 import Prices from '../../../../models/prices';
+import plus from '../../../../assets/icons/plus-square.svg';
+import minus from '../../../../assets/icons/minus-square.svg';
+import Carousel from '../../../Slider';
 
 
 class Item extends React.Component<any, any> {
@@ -93,7 +96,7 @@ class Item extends React.Component<any, any> {
         const product: ProductModel = this.props.product; 
         const attributes:any = product?product.attributes:[];
         const bagItem:BagItem = this.props.bagItem;
-          
+        
              
         return (
             <>
@@ -106,11 +109,14 @@ class Item extends React.Component<any, any> {
                     </div>
                     <div className={style['image']}>
                         <div className={style['image__buttons']}>
-                            <button onClick={()=>{this.handleCart("add")} } type="button"><FaPlus/></button>
+                            <img src={plus} alt="Button" onClick={()=>{this.handleCart("add")} } />   
                             <p>{quantity}</p>
-                            <button onClick={()=>{this.handleCart("remove")}}  type="button"><FaMinus/></button>
+                            <img src={minus} onClick={()=>{this.handleCart("remove")}}  />
                         </div>
-                        <img src={product?.gallery[0]} className={style["image__button"]} ></img>
+                        <div  className={style["image__slider"]} >
+                            <Carousel images={product?.gallery} slidesPerView={1} isMiniCart={isMiniCart}></Carousel>
+                        </div>
+    
                     </div>
                 </div>
                 <hr></hr>
