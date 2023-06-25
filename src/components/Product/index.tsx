@@ -4,7 +4,7 @@ import style from '../Product/product.module.scss';
 import { connect } from 'react-redux';
 import ProductModel from '../../models/product';
 import BagItem from '../../models/bagItem';
-import { addToCart, initialState } from '../../utils/addToCard';
+import { addToCart} from '../../utils/addToCard';
 import { updateCart } from '../../adapters/slices/updateCart';
 import AttributeSet from '../../models/attributeSet';
 
@@ -16,29 +16,12 @@ class Product extends React.Component<any, any>{
     constructor(props: any) {
         super(props);
         this.addToCart = this.addToCart.bind(this);
-        this.handleChildSizeData = this.handleChildSizeData.bind(this);
-        this.handleChildCapacityData = this.handleChildCapacityData.bind(this);
-        this.handleChildColorData = this.handleChildColorData.bind(this);
         this.state = {
-            selectedSize: '',
-            selectedCapacity: '',
-            selectedColor: '',
             initialAttributes: [],
             selections:[],
         }
     }
 
-    handleChildSizeData = (childData: string) => {
-        this.setState({ selectedSize: childData });
-    };
-
-    handleChildCapacityData = (childData: string) => {
-        this.setState({ selectedCapacity: childData });
-    };
-
-    handleChildColorData = (childData: string) => {
-        this.setState({ selectedColor: childData });
-    }; 
 
     handleChildSelections = (childData: AttributeSet[])=>{
         this.setState({
@@ -47,57 +30,13 @@ class Product extends React.Component<any, any>{
     }
 
     addToCart() {
-        let p: ProductModel = this.props.prod;
-        let s = this.state.selectedSize;
-        let cap = this.state.selectedCapacity;
-        let col = this.state.selectedColor;
-
+        let p: ProductModel = this.props.prod;     
         var bagItem = new BagItem(p, 0, this.state.selections);
 
         const { updateCart } = this.props;
-        updateCart(!this.props.update)
+        updateCart(!this.props.update);
 
         addToCart(bagItem);
-
-    }
-
-    componentDidMount(): void {
-        if (this.props.prod)
-            this.handleInitialSelections();
-    }
-
-    componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
-        if (this.props.prod && (prevProps !== this.props))
-            this.handleInitialSelections();
-    }
-
-    handleInitialSelections() {
-        let p: ProductModel = this.props.prod;
-
-        // let size = p.attributes.filter(e => e.name == "Size");
-        // let s = size.length > 0 ? size[0]?.items[0]?.value : "";
-        // this.setState({
-        //     selectedSize: s,
-        // })
-
-        // let capacity = p.attributes.filter(e => e.name == "Capacity");
-        // let cap = capacity.length > 0 ? capacity[0]?.items[0]?.value : "";
-        // this.setState({
-        //     selectedCapacity: cap,
-        // })
-
-        // let color = p.attributes.filter(e => e.name == "Color");
-        // let col = color.length > 0 ? color[0]?.items[0]?.value : "";
-        // this.setState({
-        //     selectedColor: col,
-        // })
-
-        // this.setState({
-        //     initialAttributes: [s, cap, col],
-        // })
-
-        
-
     }
 
 
@@ -105,7 +44,6 @@ class Product extends React.Component<any, any>{
         const { prod } = this.props;
         const attributes: any = prod ? prod.attributes : [];
         const { currency } = this.props;
-        const initialSelections = this.state.initialAttributes;
         const inStock = prod?.inStock;
 
         if (this.htmlRef.current) {

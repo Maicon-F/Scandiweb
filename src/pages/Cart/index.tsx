@@ -1,5 +1,4 @@
 import React from 'react';
-import itens from '../../assets/itens.json';
 import CartComponent from "../../components/Carts/Cart";
 import Header from "../../components/header";
 import Title from '../../components/Title';

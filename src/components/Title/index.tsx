@@ -3,16 +3,6 @@ import style from "./title.module.scss";
 import {connect} from 'react-redux';
 import { updateCategory } from "../../adapters/slices/category";
 
-interface Props {
-    TitleData:{
-        name: string;
-        styles: {
-            fontSize: string,
-            fontWeight: string
-            }
-    }
-}
-
 
 class Title extends React.Component<any, any>{
 
@@ -38,8 +28,6 @@ const mapStateToProps = (e: any) => {
     })
 }
 
-const mapDispatchToProps = (dispatch:any) => ({
-    updateCategory: (payload:string) => dispatch(updateCategory(payload)),
-  });
+
 
 export default connect(mapStateToProps, null)(Title)

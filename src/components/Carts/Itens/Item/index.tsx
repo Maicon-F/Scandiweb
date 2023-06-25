@@ -1,7 +1,6 @@
 import React from 'react';
 import style from '../Item/item.module.scss';
 import Attributes from '../../../Attributes';
-import { FaPlus, FaMinus } from 'react-icons/fa';
 import ProductModel from '../../../../models/product';
 import { addToCart, removeFromCart, updateItem } from '../../../../utils/addToCard';
 import { connect } from 'react-redux';
@@ -17,9 +16,6 @@ class Item extends React.Component<any, any> {
     constructor(props:any){
         super(props);
         this.handleCart = this.handleCart.bind(this);
-        // this.handleChildSizeData = this.handleChildSizeData.bind(this); 
-        // this.handleChildCapacityData = this.handleChildCapacityData.bind(this);
-        // this.handleChildColorData = this.handleChildColorData.bind(this);
         this.state = {
             update: false,
             selectedSize: '',
@@ -44,28 +40,6 @@ class Item extends React.Component<any, any> {
         updateCart(!this.props.update)
     }
 
-
-    // handleChildSizeData = (childData:string) => {
-    //     this.setState({ selectedSize: childData });
-    //     let myBagItem:BagItem = this.props.bagItem;
-    //     myBagItem.setSize(childData);
-    //     updateItem(myBagItem);
-
-    //   };
-    
-    // handleChildCapacityData = (childData:string) => {
-    //     this.setState({ selectedCapacity: childData });
-    //     let myBagItem:BagItem = this.props.bagItem;
-    //     myBagItem.setCapacity(childData);
-    //     updateItem(myBagItem);
-    //   };
-
-    // handleChildColorData = (childData:string) => {
-    //     this.setState({ selectedColor: childData });
-    //     let myBagItem:BagItem = this.props.bagItem;
-    //     myBagItem.setColor(childData);
-    //     updateItem(myBagItem);
-    //   };
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
 

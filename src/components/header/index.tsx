@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import { Component } from 'react';
 import { FiShoppingCart } from 'react-icons/fi';
 import style from './header.module.scss';
 import bag from "../../assets/icons/logo_transparent.svg"

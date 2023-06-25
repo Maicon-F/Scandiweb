@@ -5,20 +5,6 @@ import arrowDown from "../../assets/icons/down.svg";
 import left from "../../assets/icons/left.svg";
 import right from "../../assets/icons/right.svg";
 
-interface CarouselProps {
-  images: string[];
-  slidesPerView: number;
-  isMiniCart: boolean;
-  onValueChange: string;
-}
-
-interface Props {
-  onValueChange: (value: string) => void;
-}
-
-interface CarouselState {
-  currentSlide: number;
-}
 
 class Carousel extends React.Component<any, any> {
   constructor(props: any) {
@@ -86,7 +72,5 @@ class Carousel extends React.Component<any, any> {
 }
 
 export default Carousel;
-function handleChange(index: any, number: any) {
-  throw new Error('Function not implemented.');
-}
+
 
