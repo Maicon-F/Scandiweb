@@ -1,14 +1,14 @@
 # JUNIOR REACT DEV ASSIGNMENT
 
-<h4 align="center">This project is part of the recruitment process lead by Scandiweb for React Junior Dev. <a href="https://scandiweb.notion.site/Entry-React-developer-TEST-39f601f8aa3f48ac88c4a8fefda304c1"> Click here to check the assignment details.</h4>
+<h4>This project is part of the recruitment process lead by Scandiweb for React Junior Dev. <a href="https://scandiweb.notion.site/Entry-React-developer-TEST-39f601f8aa3f48ac88c4a8fefda304c1"> Click here to check the assignment details.</h4>
 
 <h2>Check it out</h2>
-<iframe width="420" height="315"
-src="https://youtu.be/J7qgLWvYBCQ">
-</iframe>
+
+<iframe width="420" height="315" src="https://youtu.be/J7qgLWvYBCQ"></iframe>
 
 
 <h2>Features</h2>
+
 - [x] PDP
 - [x] PLP 
 - [x] Cart
@@ -21,6 +21,7 @@ src="https://youtu.be/J7qgLWvYBCQ">
 - [x] Ability to change the currency of the store to one of the available currencies
 
 <h2>Possible improviments</h2>
+
 - [x] 404 page
 - [x] Error handling 
 - [x] Automatic tests
