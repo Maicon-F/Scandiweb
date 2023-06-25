@@ -1,10 +1,15 @@
+
+import AttributeSet from '../models/attributeSet';
 import BagItem from '../models/bagItem';
 import Prices from '../models/prices';
 
 export function addToCart(myBagItem: BagItem) {
 
     var { map, amount, arr }: { map: Map<string, BagItem>; amount: number; arr: any; } = ConvertToMap();
-    const key = `${myBagItem.getProduct().id} ${myBagItem.selectedCapacity} ${myBagItem.selectedColor} ${myBagItem.selectedSize}`
+    let key = `${myBagItem.getProduct().id}`;
+    myBagItem.selections.forEach(a => 
+        key = key + a.items[0].value
+    )
     var item = map.get(key);
 
     if (!item)
@@ -33,7 +38,7 @@ function ConvertToMap() {
         parsedData.forEach(function (item: any) {
             var key = item[0];
             var value = item[1];
-            var bagItem = new BagItem(value.product, value.quantity, value.selectedSize, value.selectedCapacity, value.selectedColor);
+            var bagItem = new BagItem(value.product, value.quantity, value.selections);
             map.set(key, bagItem);
         });
     }
@@ -42,7 +47,11 @@ function ConvertToMap() {
 
 export function removeFromCart(myBagItem: BagItem) {
     var { map, amount, arr }: { map: Map<string, BagItem>; amount: number; arr: any; } = ConvertToMap();
-    const key = `${myBagItem.getProduct().id} ${myBagItem.selectedCapacity} ${myBagItem.selectedColor} ${myBagItem.selectedSize}`
+    let key = `${myBagItem.getProduct().id}`;
+    myBagItem.selections.forEach(a => 
+        key = key + a.items[0].value
+    )
+    
     var item = map.get(key)
 
     if (!item)
@@ -82,7 +91,7 @@ export function getCartItems(): [BagItem] {
     var myBag: any;
     parsedData.forEach(function (item: any) {
         var value = item[1];
-        myBag = new BagItem(value.product, value.quantity, value.selectedSize, value.selectedCapacity, value.selectedColor);
+        myBag = new BagItem(value.product, value.quantity, value.selections);
         bag.push(myBag)
     });
 
@@ -111,7 +120,7 @@ export function getTotal(cur: string): number[] {
         parsedData.forEach(function (item: any) {
             var key = item[0];
             var value = item[1];
-            var bagItem = new BagItem(value.product, value.quantity, value.selectedSize, value.selectedCapacity, value.selectedColor);
+            var bagItem = new BagItem(value.product, value.quantity, value.selections);
             map.set(key, bagItem);
             res[1] = res[1] + value.quantity;
         });
@@ -131,6 +140,26 @@ export function getTotal(cur: string): number[] {
     });
     return res;
 }
+
+export function initialState(attributes: AttributeSet[]):AttributeSet[]{
+    const res = attributes.map((set) => ({
+        ...set,
+        items: [set.items[0]], // Keep only the first item
+      }));
+    
+    return res;
+}
+
+
+export function getPickedAttributes(attributes: AttributeSet[], name:string, value:string):AttributeSet[]{
+    const res = attributes.map((set) => ({
+        ...set,
+        items: [set.items[0]], // Keep only the first item
+      }));
+    
+    return res;
+}
+
 
 
 

@@ -17,9 +17,9 @@ class Item extends React.Component<any, any> {
     constructor(props:any){
         super(props);
         this.handleCart = this.handleCart.bind(this);
-        this.handleChildSizeData = this.handleChildSizeData.bind(this); 
-        this.handleChildCapacityData = this.handleChildCapacityData.bind(this);
-        this.handleChildColorData = this.handleChildColorData.bind(this);
+        // this.handleChildSizeData = this.handleChildSizeData.bind(this); 
+        // this.handleChildCapacityData = this.handleChildCapacityData.bind(this);
+        // this.handleChildColorData = this.handleChildColorData.bind(this);
         this.state = {
             update: false,
             selectedSize: '',
@@ -45,27 +45,27 @@ class Item extends React.Component<any, any> {
     }
 
 
-    handleChildSizeData = (childData:string) => {
-        this.setState({ selectedSize: childData });
-        let myBagItem:BagItem = this.props.bagItem;
-        myBagItem.setSize(childData);
-        updateItem(myBagItem);
+    // handleChildSizeData = (childData:string) => {
+    //     this.setState({ selectedSize: childData });
+    //     let myBagItem:BagItem = this.props.bagItem;
+    //     myBagItem.setSize(childData);
+    //     updateItem(myBagItem);
 
-      };
+    //   };
     
-    handleChildCapacityData = (childData:string) => {
-        this.setState({ selectedCapacity: childData });
-        let myBagItem:BagItem = this.props.bagItem;
-        myBagItem.setCapacity(childData);
-        updateItem(myBagItem);
-      };
+    // handleChildCapacityData = (childData:string) => {
+    //     this.setState({ selectedCapacity: childData });
+    //     let myBagItem:BagItem = this.props.bagItem;
+    //     myBagItem.setCapacity(childData);
+    //     updateItem(myBagItem);
+    //   };
 
-    handleChildColorData = (childData:string) => {
-        this.setState({ selectedColor: childData });
-        let myBagItem:BagItem = this.props.bagItem;
-        myBagItem.setColor(childData);
-        updateItem(myBagItem);
-      };
+    // handleChildColorData = (childData:string) => {
+    //     this.setState({ selectedColor: childData });
+    //     let myBagItem:BagItem = this.props.bagItem;
+    //     myBagItem.setColor(childData);
+    //     updateItem(myBagItem);
+    //   };
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
 
@@ -105,7 +105,7 @@ class Item extends React.Component<any, any> {
                         <div><p className={`${style['content-title']}`}>{product?.id}</p></div>
                         <div><p className={`${style['content-subtitle']}`}>{product?.brand}</p></div>
                         <div><p className={`${style['content-price']}`}>{currency}{this.state.amount}</p></div>
-                        <Attributes attributes={attributes} isMiniCart={isMiniCart} selectedSize={this.handleChildSizeData} initAttributes={[bagItem.selectedSize, bagItem.selectedCapacity, bagItem.selectedColor]} selectedCapacity={this.handleChildCapacityData} selectedColor={this.handleChildColorData}></Attributes>
+                        <Attributes attributes={attributes} isMiniCart={isMiniCart} bagSelections={bagItem.selections}></Attributes>
                     </div>
                     <div className={style['image']}>
                         <div className={style['image__buttons']}>
@@ -114,7 +114,7 @@ class Item extends React.Component<any, any> {
                             <img src={minus} onClick={()=>{this.handleCart("remove")}}  />
                         </div>
                         <div  className={style["image__slider"]} >
-                            <Carousel images={product?.gallery} slidesPerView={1} isMiniCart={isMiniCart}></Carousel>
+                            <Carousel images={product?.gallery} slidesPerView={1} ></Carousel>
                         </div>
     
                     </div>

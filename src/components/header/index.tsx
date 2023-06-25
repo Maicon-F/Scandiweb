@@ -13,7 +13,6 @@ import {displayCart} from '../../adapters/slices/displayCart';
 import Currency from '../../models/currency';
 import { updateCurrency } from '../../adapters/slices/currency';
 import { getTotal } from '../../utils/addToCard';
-import updateCart from '../../adapters/slices/updateCart';
 
 
 const currencies = new Currency('','');
@@ -113,14 +112,12 @@ class Header extends Component<any, any> {
         if (element && !element.contains(event.target as Node)) {
             this.setState({ hideCart: true });
             displayCart(false);
-          
         }
       };
-    
+  
 
 
     render() {
-     
         return (
 
             <div className={style.container}> 
@@ -144,8 +141,8 @@ class Header extends Component<any, any> {
                 <img className={`${this.state.dispOps ?'':style[`container__buttons--inactive`] }`} src={arrowUp} style={{ maxWidth: '1vw', paddingLeft:'6px' }} onClick={() => this.setState({ dispOps:false})} />
                 
                      
-                <div className={style.miniCartFatlher}>        
-                    <FiShoppingCart id="element" style={{ fontSize: '24px', marginLeft:'20px', position:'relative' }} onClick={()=> this.handleMiniCart()} />
+                <div id="element" className={style.miniCartFatlher}>        
+                    <FiShoppingCart style={{ fontSize: '24px', marginLeft:'20px', position:'relative' }} onClick={()=> this.handleMiniCart()} />
                     <span className={style.counter}>{this.state.quantity}</span>
                     <div className={`${style.miniCart} ${this.state.hideCart? style['miniCart--isActive']:''}`}><MiniCart  /></div>
                 </div>
@@ -162,14 +159,15 @@ const mapStateToProps = (e: any) => {
     return ({
         category: e.category,
         currency: e.currency,
-        updateCart: e.updateCart
+        updateCart: e.updateCart,
+        update: e.updateCart
     })
 }
 
 const mapDispatchToProps = (dispatch: any) => ({
     updateCategory: (payload: string) => dispatch(updateCategory(payload)),
     displayCart:(payload: boolean) => dispatch(displayCart(payload)),
-    updateCurrency:(payload: string) => dispatch(updateCurrency(payload)),
+    updateCurrency:(payload: string) => dispatch(updateCurrency(payload)),    
   
 });
 

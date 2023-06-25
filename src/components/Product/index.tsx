@@ -4,7 +4,9 @@ import style from '../Product/product.module.scss';
 import { connect } from 'react-redux';
 import ProductModel from '../../models/product';
 import BagItem from '../../models/bagItem';
-import { addToCart } from '../../utils/addToCard';
+import { addToCart, initialState } from '../../utils/addToCard';
+import { updateCart } from '../../adapters/slices/updateCart';
+import AttributeSet from '../../models/attributeSet';
 
 
 
@@ -13,7 +15,7 @@ class Product extends React.Component<any, any>{
 
     constructor(props: any) {
         super(props);
-        this.AddToCart = this.AddToCart.bind(this);
+        this.addToCart = this.addToCart.bind(this);
         this.handleChildSizeData = this.handleChildSizeData.bind(this);
         this.handleChildCapacityData = this.handleChildCapacityData.bind(this);
         this.handleChildColorData = this.handleChildColorData.bind(this);
@@ -22,6 +24,7 @@ class Product extends React.Component<any, any>{
             selectedCapacity: '',
             selectedColor: '',
             initialAttributes: [],
+            selections:[],
         }
     }
 
@@ -35,54 +38,65 @@ class Product extends React.Component<any, any>{
 
     handleChildColorData = (childData: string) => {
         this.setState({ selectedColor: childData });
-    };
+    }; 
 
-    AddToCart() {
+    handleChildSelections = (childData: AttributeSet[])=>{
+        this.setState({
+            selections: childData,
+        })
+    }
+
+    addToCart() {
         let p: ProductModel = this.props.prod;
         let s = this.state.selectedSize;
         let cap = this.state.selectedCapacity;
         let col = this.state.selectedColor;
 
-        var bagItem = new BagItem(p, 0, s, cap, col);
+        var bagItem = new BagItem(p, 0, this.state.selections);
+
+        const { updateCart } = this.props;
+        updateCart(!this.props.update)
 
         addToCart(bagItem);
+
     }
 
     componentDidMount(): void {
-        if(this.props.prod)
+        if (this.props.prod)
             this.handleInitialSelections();
     }
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
-        if(this.props.prod && (prevProps !== this.props))
+        if (this.props.prod && (prevProps !== this.props))
             this.handleInitialSelections();
     }
 
     handleInitialSelections() {
-            let p: ProductModel = this.props.prod;
+        let p: ProductModel = this.props.prod;
 
-            let size = p.attributes.filter(e => e.name == "Size");
-            let s = size.length > 0 ? size[0]?.items[0]?.value : "";
-            this.setState({
-                selectedSize: s,
-            })
-        
-            let capacity = p.attributes.filter(e => e.name == "Capacity");
-            let cap = capacity.length > 0 ? capacity[0]?.items[0]?.value : "";
-            this.setState({
-                selectedCapacity: cap,
-            })
-               
-            let color = p.attributes.filter(e => e.name == "Color");
-            let col = color.length > 0 ? color[0]?.items[0]?.value : "";
-            this.setState({
-                selectedColor: col,
-            })
-        
+        // let size = p.attributes.filter(e => e.name == "Size");
+        // let s = size.length > 0 ? size[0]?.items[0]?.value : "";
+        // this.setState({
+        //     selectedSize: s,
+        // })
 
-        this.setState({
-            initialAttributes: [s, cap, col],
-        })
+        // let capacity = p.attributes.filter(e => e.name == "Capacity");
+        // let cap = capacity.length > 0 ? capacity[0]?.items[0]?.value : "";
+        // this.setState({
+        //     selectedCapacity: cap,
+        // })
+
+        // let color = p.attributes.filter(e => e.name == "Color");
+        // let col = color.length > 0 ? color[0]?.items[0]?.value : "";
+        // this.setState({
+        //     selectedColor: col,
+        // })
+
+        // this.setState({
+        //     initialAttributes: [s, cap, col],
+        // })
+
+        
 
     }
 
@@ -92,7 +106,8 @@ class Product extends React.Component<any, any>{
         const attributes: any = prod ? prod.attributes : [];
         const { currency } = this.props;
         const initialSelections = this.state.initialAttributes;
-    
+        const inStock = prod?.inStock;
+
         if (this.htmlRef.current) {
             this.htmlRef.current.innerHTML = prod?.description;
         }
@@ -108,12 +123,12 @@ class Product extends React.Component<any, any>{
                 <div className={style['pd-details']}>
                     <p className={style['pd-details__title']}>{prod?.brand}</p>
                     <p className={style['pd-details__subtitle']}>{prod?.name}</p>
-                    <Attributes attributes={attributes} initAttributes={initialSelections} selectedSize={this.handleChildSizeData} selectedCapacity={this.handleChildCapacityData} selectedColor={this.handleChildColorData}></Attributes>
+                    <Attributes attributes={attributes} sets={this.handleChildSelections} ></Attributes>
                     <p className={`${style['pd-details__price-label']}`}>PRICE:</p>
                     <p className={`${style['pd-details__price']}`}>${p}</p>
-                    <a href={`/cart`}><button onClick={() => this.AddToCart()}>ADD TO CART</button></a>
-                    <div style={{overflow: "hidden",paddingTop:"20px"}}>
-                    <p className={`${style['pd-details__description']}`} ref={this.htmlRef}></p>
+                    <button disabled={!inStock} style={{ opacity: inStock ? '1' : '0.6' }} onClick={() => this.addToCart()} >ADD TO CART</button>
+                    <div style={{ overflow: "hidden", paddingTop: "20px" }}>
+                        <p className={`${style['pd-details__description']}`} ref={this.htmlRef}></p>
                     </div>
                 </div>
             </div>
@@ -126,10 +141,16 @@ class Product extends React.Component<any, any>{
 const mapStateToProps = (e: any) => {
     return ({
         currency: e.currency,
+        update: e.updateCart,
     })
 }
 
 
-export default connect(mapStateToProps)(Product)
+
+const mapDispatchToProps = (dispatch: any) => ({
+    updateCart: (payload: boolean) => dispatch(updateCart(payload)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(Product)
 
 

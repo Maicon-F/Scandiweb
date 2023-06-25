@@ -1,3 +1,4 @@
+import AttributeSet from "./attributeSet";
 import Product from "./product";
 
 
@@ -7,14 +8,14 @@ export default class BagItem{
     public selectedColor:string ="";
     public selectedSize:string ="";
     public selectedCapacity:string = ""; 
+    public selections: AttributeSet[]= [];
 
 
-    constructor(product:Product, quantity:number, size:string, capacity:string, color:string){
+
+    constructor(product:Product, quantity:number, attributes:AttributeSet[]){
         this.product = product;
         this.quantity = quantity;
-        this.selectedSize = size;
-        this.selectedCapacity = capacity;
-        this.selectedColor = color;
+        this.selections = attributes;
         
     }
 
@@ -33,6 +34,14 @@ public setQuantity(q:number){
 
 public getQuantity(){
     return this.quantity;
+}
+
+public setSelections(s:AttributeSet[]){
+    this.selections = s;
+}
+
+public getSelections(){
+    return this.selections;
 }
 
 public getSize(){
