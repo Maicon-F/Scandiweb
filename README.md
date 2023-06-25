@@ -2,7 +2,7 @@
 
 <h4>This project is part of the recruitment process lead by Scandiweb for React Junior Dev. <a href="https://scandiweb.notion.site/Entry-React-developer-TEST-39f601f8aa3f48ac88c4a8fefda304c1"> Click here to check the assignment details.</h4>
 
-[![Check it out](https://img.youtube.com/vi/%3CJ7qgLWvYBCQ%3E/maxresdefault.jpg)](https://youtu.be/%3Chttps://www.youtube.com/watch?v=J7qgLWvYBCQ%3E)
+[![Check it out](https://img.youtube.com/vi/J7qgLWvYBCQ/maxresdefault.jpg)](https://youtu.be/J7qgLWvYBCQ)
 
 
 
