@@ -1,6 +1,4 @@
-import itens from './assets/itens.json';
 import Router from './routers/router';
-
 
 function App() {
   return (

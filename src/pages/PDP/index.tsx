@@ -7,10 +7,6 @@ import style from "./pdp.module.scss"
 
 class PDP extends React.Component<any, any>{
 
-    hideMiniCart(){
-        
-    }
-
     render() {
         const {displayCart} = this.props;
         return(
@@ -33,7 +29,6 @@ const mapStateToProps = (e: any) => {
         displayCart: e.displayCart
     })
 }
-
 
 
 export default connect(mapStateToProps)(PDP)

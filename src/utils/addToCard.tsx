@@ -144,7 +144,7 @@ export function getTotal(cur: string): number[] {
 export function initialState(attributes: AttributeSet[]):AttributeSet[]{
     const res = attributes.map((set) => ({
         ...set,
-        items: [set.items[0]], // Keep only the first item
+        items: [set.items[0]], 
       }));
     
     return res;
@@ -154,7 +154,7 @@ export function initialState(attributes: AttributeSet[]):AttributeSet[]{
 export function getPickedAttributes(attributes: AttributeSet[], name:string, value:string):AttributeSet[]{
     const res = attributes.map((set) => ({
         ...set,
-        items: [set.items[0]], // Keep only the first item
+        items: [set.items[0]], 
       }));
     
     return res;

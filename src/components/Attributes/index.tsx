@@ -26,7 +26,6 @@ export default class Attributes extends React.Component<any, any>{
             set.items = [item];
     
             this.props.sets(sets);
-            console.log("SET", sets)
             this.setState({
                 selections: sets,
             })
@@ -38,7 +37,7 @@ export default class Attributes extends React.Component<any, any>{
 
     handleInitialState(){
         let init: AttributeSet [] = this.props.bagSelections;
-        console.log("atr ", init);
+
         if(!init){
             let attributes: AttributeSet[] = this.props.attributes;
             init = initialState(attributes);
@@ -57,7 +56,7 @@ export default class Attributes extends React.Component<any, any>{
     getChosenAttributes(name: string, value: string): boolean{
          let result = false;
          let selection:AttributeSet[] = this.state.selections;
-         console.log("selection ", selection);
+
          if(selection){
             const setArr = selection?.filter((e)=> e.name === name);
             const selectedValue = setArr[0]?.items[0].value;
@@ -68,30 +67,14 @@ export default class Attributes extends React.Component<any, any>{
         return result;
     }
 
-    handleSelection(name:string, value:string){
-        let attributes: AttributeSet[] = this.props.attributes;
-        
-        if(attributes){
-            const setArr = attributes?.filter((e)=> e.name === name);
-            
-            const selectedValue = setArr[0]?.items[0].value;
-               
-         }
-
-    }
-
     componentDidMount(): void {
         this.handleInitialState();
 
     }
 
     componentDidUpdate(prevProps: Readonly<any>, prevState: Readonly<any>, snapshot?: any): void {
-        if (prevProps.attributes !== this.props.attributes && typeof this.props.attributes !== undefined){
+        if (prevProps.attributes !== this.props.attributes && typeof this.props.attributes !== undefined)
             this.handleInitialState();
-            console.log("TESTE2222")
-        }
-            
-          
     }
 
 
