@@ -29,39 +29,39 @@ class Carousel extends React.Component<any, any> {
     }
   };
 
-  sendDataToParent = (image:any) => {    
-    this.props.onValueChange(image); 
+  sendDataToParent = (image: any) => {
+    this.props.onValueChange(image);
   }
 
   render() {
     const { images, slidesPerView, isMiniCart } = this.props;
-    const n = slidesPerView?slidesPerView:1;
+    const n = slidesPerView ? slidesPerView : 1;
     const { currentSlide } = this.state;
-    let gallery = images?images:[];
-    
-   
+    let gallery = images ? images : [];
+
+
 
     return (
-      <div className={style.carousel}>    
-        <div className={style.controls}  style={{display:n==1?'none':''}} >
-            <button className={style.prevButton} onClick={this.goToPrevSlide} disabled={currentSlide === 0}>
-                <img  src={arrowUp}/>
-            </button>
+      <div className={style.carousel}>
+        <div className={style.controls} style={{ display: n == 1 ? 'none' : '' }} >
+          <button className={style.prevButton} onClick={this.goToPrevSlide} disabled={currentSlide === 0}>
+            <img src={arrowUp} />
+          </button>
         </div>
 
-        <div className={style.slideWrapper} style={{position:'relative'}}>
+        <div className={style.slideWrapper} style={{ position: 'relative' }}>
           {gallery.slice(currentSlide, currentSlide + n).map((image: string | undefined, index: React.Key | null | undefined) => (
             <div className={style.slide} key={index}>
-              <img className={style.image} src={image} alt={`Slide ${currentSlide + index + 1}`} onClick={()=>this.sendDataToParent(image)}/>
-            </div> 
+              <img className={style.image} src={image} alt={`Slide ${currentSlide + index + 1}`} onClick={() => this.sendDataToParent(image)} />
+            </div>
           ))}
-        <div className={style.cartControl} style={{display:(n==1 && !isMiniCart)?'':'none'}}>
-          <img src={left} onClick={this.goToPrevSlide}  />
-          <img src={right} onClick={this.goToNextSlide} />
-        </div>
+          <div className={style.cartControl} style={{ display: (n == 1 && !isMiniCart) ? '' : 'none' }}>
+            <img src={left} onClick={this.goToPrevSlide} />
+            <img src={right} onClick={this.goToNextSlide} />
+          </div>
         </div>
 
-        <div className={style.controls} style={{display:n==1?'none':''}}>
+        <div className={style.controls} style={{ display: n == 1 ? 'none' : '' }}>
           <button className={style.nextButton} onClick={this.goToNextSlide} disabled={currentSlide >= gallery.length - 3}>
             <img src={arrowDown} alt="Next" />
           </button>

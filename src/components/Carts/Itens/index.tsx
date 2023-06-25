@@ -1,14 +1,10 @@
 import React from 'react';
-import prods from '../../../assets/itens.json';
 import style from './itens.module.scss';
 import Item from '../Itens/Item/index';
 import Bag from '../../../models/bagItem'
 import { connect } from 'react-redux';
 import { getCartItems, getTotal } from '../../../utils/addToCard';
 import { updateCart } from '../../../adapters/slices/updateCart';
-
-//type Props = typeof itens[0];
-export type Props = { products: typeof prods };
 
 
 class Itens extends React.Component<any, any> {
@@ -100,7 +96,7 @@ class Itens extends React.Component<any, any> {
                         <p style={{fontWeight:'bold'}}>{this.props.currency}{(this.state.total).toFixed(2)}</p>
                     </div>
                     <div className={style['miniCart--buttons']}>
-                        <a ><button className={style.checkoutButtons} style={{backgroundColor:'white', color:'black', border:'1.5px solid black', width:"12vw"}}> View Bag</button></a>
+                        <a href={'/cart'} ><button className={style.checkoutButtons} style={{backgroundColor:'white', color:'black', border:'1.5px solid black', width:"12vw"}}> View Bag</button></a>
                         <a ><button className={style.checkoutButtons} style={{width:'12vw'}}>Checkout</button></a>
                     </div> 
                 </div>   

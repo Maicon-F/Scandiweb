@@ -1,79 +1,73 @@
 .carousel {
-    cursor:pointer;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  //margin: -130px 0px 0px 0px;
+}
+
+.slide {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.image {
+  padding: 5px 0px;
+  padding: 10px auto;
+
+}
+
+
+.controls {
+  button {
+    border: none;
+    outline: none;
+    font-size: 18px;
+    width: 24px;
+    height: 24px;
+    background-color: white;
+    cursor: pointer;
+  }
+
+  button:disabled {
+    width: 0px;
+  }
+}
+
+
+.cartControl {
+  display: flex;
+  justify-items: end;
+  align-items: flex-end;
+  position: absolute;
+  bottom: 30px;
+  left: 40px;
+
+  img {
+    margin-right: 5px;
+    height: 20px;
+    width: auto;
+  }
+
+}
+
+.slideWrapper {
+  position: relative;
+
+  .cartControl {
     display: flex;
-    flex-direction: column;
-    height: 100%;
-    //margin: -130px 0px 0px 0px;
-  }
-  
-  .slide {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 100%;
-  }
-  
-  .image {
-    padding: 5px 0px;
-    padding: 10px auto;
+    justify-items: end;
+    align-items: flex-end;
+    position: absolute;
+    bottom: 10px;
+    left: 200px;
 
-  }
-
- 
-    .controls{     
-        button {
-        border: none;
-        outline: none;
-        font-size: 18px;
-        width: 24px;
-        height: 24px;
-        background-color:white;
-        cursor:pointer;
-        }
-
-        button:disabled{
-            width: 0px;
-        }
+    img {
+      margin-right: 5px;
     }
 
-
-    .cartControl{
-        display: flex;
-        justify-items:end;
-        align-items:flex-end;
-        position: absolute;
-        bottom: 30px;
-        left: 40px;
-
-        img{
-            margin-right: 5px;
-            height: 20px;
-            width: auto;
-        }
-        
-    }
-
-   .slideWrapper{
-    position: relative;
-    .cartControl{
-      display: flex;
-      justify-items:end;
-      align-items:flex-end;
-      position: absolute;
-      bottom: 10px;
-      left: 200px;
-
-      img{
-          margin-right: 5px;
-      }
-      
   }
-   }
-  
-
-
-
-
-    
-  
+}

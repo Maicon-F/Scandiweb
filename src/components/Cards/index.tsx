@@ -29,7 +29,7 @@ class Cards extends React.Component<any, any> {
     let res = await client.query({
       query: GET_PRODUCTS_BY_CATEGORY(category.toLocaleLowerCase()),
     });
-  
+
     this.setState({
       products: [...res.data.category.products]
     })
@@ -38,18 +38,18 @@ class Cards extends React.Component<any, any> {
 
 
   render() {
-  
+
     return (
       <div className={style.containerParent}>
-      <div className={style.container} >
-        {this.state.products.map((item:any) => (
-          <Product key={item.id} product={item} />
-        ))}
-      </div>
-      <div className={style.overlay}></div>
+        <div className={style.container} >
+          {this.state.products.map((item: any) => (
+            <Product key={item.id} product={item} />
+          ))}
+        </div>
+        <div className={style.overlay}></div>
       </div>
     )
-    
+
   }
 }
 
@@ -57,7 +57,7 @@ class Cards extends React.Component<any, any> {
 const mapStateToProps = (e: any) => {
   return ({
     category: e.category
-    
+
   })
 }
 

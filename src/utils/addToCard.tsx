@@ -7,7 +7,7 @@ export function addToCart(myBagItem: BagItem) {
 
     var { map, amount, arr }: { map: Map<string, BagItem>; amount: number; arr: any; } = ConvertToMap();
     let key = `${myBagItem.getProduct().id}`;
-    myBagItem.selections.forEach(a => 
+    myBagItem.selections.forEach(a =>
         key = key + a.items[0].value
     )
     var item = map.get(key);
@@ -48,10 +48,10 @@ function ConvertToMap() {
 export function removeFromCart(myBagItem: BagItem) {
     var { map, amount, arr }: { map: Map<string, BagItem>; amount: number; arr: any; } = ConvertToMap();
     let key = `${myBagItem.getProduct().id}`;
-    myBagItem.selections.forEach(a => 
+    myBagItem.selections.forEach(a =>
         key = key + a.items[0].value
     )
-    
+
     var item = map.get(key)
 
     if (!item)
@@ -141,22 +141,22 @@ export function getTotal(cur: string): number[] {
     return res;
 }
 
-export function initialState(attributes: AttributeSet[]):AttributeSet[]{
+export function initialState(attributes: AttributeSet[]): AttributeSet[] {
     const res = attributes.map((set) => ({
         ...set,
-        items: [set.items[0]], 
-      }));
-    
+        items: [set.items[0]],
+    }));
+
     return res;
 }
 
 
-export function getPickedAttributes(attributes: AttributeSet[], name:string, value:string):AttributeSet[]{
+export function getPickedAttributes(attributes: AttributeSet[], name: string, value: string): AttributeSet[] {
     const res = attributes.map((set) => ({
         ...set,
-        items: [set.items[0]], 
-      }));
-    
+        items: [set.items[0]],
+    }));
+
     return res;
 }
 

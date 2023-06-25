@@ -5,13 +5,13 @@ import style from "./cart.module.scss";
 
 export default class CartComponent extends React.Component<any, any>{
     render() {
-     
-        return(
+
+        return (
 
             <div className={style.cart}>
-             <Itens isMiniCart={false} />
-          </div>
-                      
+                <Itens isMiniCart={false} />
+            </div>
+
         )
     }
 }

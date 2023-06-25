@@ -5,64 +5,70 @@
     font-size: 18px;
     align-items: center;
     margin: auto 100px;
-    
 
-    &__categories{
+
+    &__categories {
         cursor: pointer;
         display: flex;
         justify-content: space-evenly;
         align-items: center;
-        position:'relative';
-       p{
+        position: 'relative';
+
+        p {
             margin-right: 30px;
-       } 
-       &--active{
-        color: var(--lemon);
-        text-decoration: none;
-        border-bottom: 1px solid var(--lemon);
-       }
+        }
+
+        &--active {
+            color: var(--lemon);
+            text-decoration: none;
+            border-bottom: 1px solid var(--lemon);
+        }
     }
 
-    &__buttons{
+    &__buttons {
         cursor: pointer;
         display: flex;
         align-items: center;
         margin-left: 50px;
         position: relative;
-        div{
+
+        div {
             font-size: 18px;
+
             label {
-                
-            select {
-                position: absolute ;
-                top: 30px;
-                left: 0px; 
-                border: none;
-                outline: none;
-                font-size: 18px;
-                font-family: var(--ral);
-                option{
-                    padding: 5px 20px;
+
+                select {
+                    position: absolute;
+                    top: 30px;
+                    left: 0px;
+                    border: none;
+                    outline: none;
+                    font-size: 18px;
+                    font-family: var(--ral);
+
+                    option {
+                        padding: 5px 20px;
+                    }
+
                 }
- 
-              }
             }
         }
 
-        &--inactive{
-            display:none;
+        &--inactive {
+            display: none;
         }
-    }  
+    }
 
 }
 
-.miniCart{
+.miniCart {
     position: absolute;
     right: -30px;
     width: 440px;
     z-index: 2;
     background-color: white;
-    &--isActive{
+
+    &--isActive {
         display: none;
     }
 }
@@ -85,5 +91,4 @@
     display: flex;
     align-items: center;
     justify-content: center;
-  }
-
+}
