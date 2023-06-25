@@ -4,7 +4,7 @@ import Product from '../components/Product';
 import Category from '../pages/Category';
 import PDP from "../pages/PDP";
 import Cart from '../pages/Cart';
-import MiniCart from '../components/MiniCart/Cart/index';
+
 import Header from '../components/header';
 
   export default class Router extends React.Component{
@@ -16,8 +16,7 @@ import Header from '../components/header';
                     <Route path="/home" element={<Category />} />   
                     <Route path="/" element={<Category />} /> 
                     <Route path="/product" element={<Product />} />    
-                    <Route path="/cart" element={<Cart />} />
-                    <Route path="/mini-cart" element={<MiniCart />} />
+                    <Route path="/cart" element={<Cart />} />   
                     <Route path="/header" element={<Header/>} />
                 </Routes>
             </BrowserRouter>
